@@ -1,0 +1,103 @@
+name: RTL or mixed-direction rendering problem
+description: Report sanitized Arabic, English, bidi, list, field, or Word rendering behavior.
+title: "[RTL] "
+labels: ["bug", "rtl"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping turn a reproducible failure into a guardrail.
+        Do not upload client documents, raw conversations, personal data, credentials, or confidential screenshots. Use a minimal synthetic file or a sanitized structural description.
+  - type: input
+    id: release
+    attributes:
+      label: Project version or commit
+      placeholder: v0.1.0 or a commit SHA
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Operating system and exact application version
+      placeholder: Windows 11; Microsoft Word Desktop version and build
+    validations:
+      required: true
+  - type: input
+    id: locale
+    attributes:
+      label: Word and operating-system locale
+      placeholder: Arabic (Egypt) document; English (United States) application UI
+    validations:
+      required: true
+  - type: dropdown
+    id: direction
+    attributes:
+      label: Affected content direction
+      options:
+        - Arabic RTL
+        - English LTR
+        - Mixed Arabic-English
+        - URL, code, formula, or technical run
+        - List, header, footer, or field
+    validations:
+      required: true
+  - type: dropdown
+    id: route
+    attributes:
+      label: Route used
+      options: [FAST, STRUCTURED, COMPLEX, Unknown]
+    validations:
+      required: true
+  - type: dropdown
+    id: validation
+    attributes:
+      label: Highest validation surface actually performed
+      options:
+        - Built only
+        - Structurally audited
+        - Rendered and inspected
+        - Word Desktop verified
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Describe synthetic content, styles, direction, and the smallest steps that reproduce the behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+  - type: input
+    id: error_id
+    attributes:
+      label: Related error ID, if known
+      placeholder: ERR-RTL-003
+  - type: textarea
+    id: audit
+    attributes:
+      label: Sanitized audit summary
+      description: Paste finding categories and counts only; remove document text, local paths, and identifying values.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I confirm that all submitted text, files, images, links, and Office metadata are synthetic or fully sanitized.
+          required: true
+        - label: I did not include a raw ChatGPT/Codex conversation, conversation reference, client file, secret, or personal data.
+          required: true
+        - label: I have permission to share every attached synthetic or sanitized sample publicly.
+          required: true

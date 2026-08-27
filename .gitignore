@@ -1,0 +1,47 @@
+# Local validation dependencies
+.validation-deps/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and local configuration
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Generated document and QA output
+artifacts/
+output/
+outputs/
+reports/
+regression-output/
+.qa/
+*.docx
+*.pdf
+*.png
+*.audit.json
+audit.json
+~$*
+
+# Keep the canonical bundled template
+!skills/arabic-word-production/assets/arabic-word-template.docx
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

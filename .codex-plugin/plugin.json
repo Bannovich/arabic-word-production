@@ -1,0 +1,39 @@
+{
+  "name": "arabic-word-production",
+  "version": "0.1.0",
+  "description": "Create and audit Arabic-first and bilingual Microsoft Word documents with explicit RTL semantics.",
+  "author": {
+    "name": "Bannovich",
+    "email": "73133823+Bannovich@users.noreply.github.com",
+    "url": "https://github.com/Bannovich"
+  },
+  "homepage": "https://github.com/Bannovich/arabic-word-production",
+  "repository": "https://github.com/Bannovich/arabic-word-production",
+  "license": "Apache-2.0",
+  "keywords": [
+    "arabic",
+    "bilingual",
+    "docx",
+    "microsoft-word",
+    "rtl",
+    "wordprocessingml"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Arabic Word Production",
+    "shortDescription": "Reliable Arabic-first and bilingual Word documents",
+    "longDescription": "Build and structurally audit Arabic-first and bilingual DOCX files with explicit paragraph, run, table, and section direction rules.",
+    "developerName": "Bannovich",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Bannovich/arabic-word-production",
+    "defaultPrompt": [
+      "Create an audited Arabic RTL Word document.",
+      "Repair this bilingual DOCX for Word Desktop.",
+      "Audit this Arabic Word file for RTL errors."
+    ],
+    "brandColor": "#1F4E78"
+  }
+}

@@ -1,0 +1,91 @@
+name: Table or section layout problem
+description: Report sanitized table direction, column width, landscape, pagination, or section behavior.
+title: "[TABLE] "
+labels: ["bug", "table"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share only synthetic or fully sanitized evidence. Never upload a real client table or document.
+  - type: input
+    id: release
+    attributes:
+      label: Project version or commit
+      placeholder: v0.1.0 or a commit SHA
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Operating system and exact application version
+    validations:
+      required: true
+  - type: input
+    id: locale
+    attributes:
+      label: Word and operating-system locale
+    validations:
+      required: true
+  - type: dropdown
+    id: direction
+    attributes:
+      label: Table content direction
+      options:
+        - Arabic RTL
+        - English LTR
+        - Mixed Arabic-English
+    validations:
+      required: true
+  - type: input
+    id: shape
+    attributes:
+      label: Synthetic table shape
+      placeholder: 12 rows, 7 columns, RTL, mixed numeric and descriptive cells
+    validations:
+      required: true
+  - type: textarea
+    id: geometry
+    attributes:
+      label: Relevant geometry and section details
+      description: Include orientation, page size, margins, width weights, autofit state, and adjacent sections when known.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: dropdown
+    id: validation
+    attributes:
+      label: Highest validation surface actually performed
+      options:
+        - Built only
+        - Structurally audited
+        - Rendered and inspected
+        - Word Desktop verified
+    validations:
+      required: true
+  - type: textarea
+    id: audit
+    attributes:
+      label: Sanitized audit summary
+      description: Include only finding categories, table geometry, and counts; remove real cell content and local paths.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: All evidence is synthetic or fully sanitized, including cell text, metadata, links, comments, and embedded content.
+          required: true
+        - label: I have permission to share every attached synthetic or sanitized sample publicly.
+          required: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Arabic Word Production"
+  short_description: "Reliable RTL and bilingual Word documents"
+  brand_color: "#1F4E78"
+  default_prompt: "Use $arabic-word-production to turn this Arabic or bilingual content into a polished, structurally audited Word document."
+policy:
+  allow_implicit_invocation: true

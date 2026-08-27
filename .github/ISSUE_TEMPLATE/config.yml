@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability or accidental data exposure
+    url: https://github.com/Bannovich/arabic-word-production/security/advisories/new
+    about: Report security problems privately; do not place secrets or private documents in an Issue.
+  - name: Support guide
+    url: https://github.com/Bannovich/arabic-word-production/blob/main/SUPPORT.md
+    about: Check scope, preparation steps, and privacy boundaries before opening an Issue.

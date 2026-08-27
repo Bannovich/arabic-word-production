@@ -1,0 +1,104 @@
+name: Image or object problem
+description: Report sanitized image, caption, chart, equation, shape, or embedded-object behavior.
+title: "[OBJECT] "
+labels: ["bug", "object"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not upload client logos, screenshots, signatures, private charts, or embedded files. Recreate the problem with a synthetic asset.
+  - type: input
+    id: release
+    attributes:
+      label: Project version or commit
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Operating system and exact application version
+    validations:
+      required: true
+  - type: input
+    id: locale
+    attributes:
+      label: Word and operating-system locale
+    validations:
+      required: true
+  - type: dropdown
+    id: direction
+    attributes:
+      label: Surrounding content direction
+      options:
+        - Arabic RTL
+        - English LTR
+        - Mixed Arabic-English
+    validations:
+      required: true
+  - type: dropdown
+    id: object_type
+    attributes:
+      label: Object type
+      options:
+        - Inline image
+        - Floating image
+        - Chart
+        - Equation
+        - Shape or text box
+        - Embedded file
+        - Other synthetic object
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Synthetic source properties
+      description: Include dimensions, format, resolution, placement, caption, and alt text without private content.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+  - type: dropdown
+    id: validation
+    attributes:
+      label: Highest validation surface actually performed
+      options:
+        - Built only
+        - Structurally audited
+        - Rendered and inspected at 100 percent
+        - Rendered and inspected at 200 percent
+        - Word Desktop verified
+    validations:
+      required: true
+  - type: textarea
+    id: audit
+    attributes:
+      label: Sanitized audit summary
+      description: Include finding categories, dimensions, and counts only; remove private paths and source content.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy and rights confirmation
+      options:
+        - label: The asset and document are synthetic or fully sanitized and I have the right to share them publicly.
+          required: true
+        - label: No hidden or embedded private file is included.
+          required: true

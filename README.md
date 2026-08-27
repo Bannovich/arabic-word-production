@@ -103,4 +103,3 @@ Instead:
 Start with [CONTRIBUTING.md](CONTRIBUTING.md), then use an Issue form to propose a new guardrail, report a sanitized rendering problem, or suggest an improvement. Governance, support boundaries, security reporting, and the roadmap are documented separately so non-developers can contribute without learning the whole codebase first.
 
 The project uses the [Apache License 2.0](LICENSE). See [NOTICE](NOTICE) for attribution and trademark clarification.
-
