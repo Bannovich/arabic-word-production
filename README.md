@@ -22,7 +22,7 @@ Start a new task after installation, attach or describe the content, and write:
 $arabic-word-production Create an Arabic-first Word document, then audit its RTL structure.
 ```
 
-Until the repository is public, use the same request with the local folder instead of the GitHub URL.
+The public GitHub URL above is the canonical installation source. If you already have a local checkout, use the manual standalone Skill steps below.
 
 ### Manual standalone Skill installation
 

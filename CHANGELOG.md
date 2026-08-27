@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - A public contribution path for future sanitized RTL failures and reusable guardrails.
+- A publication guardrail that rejects stale private-to-public transition wording in both READMEs.
+
+### Fixed
+
+- Replaced pre-publication installation wording after the repository became public.
 
 ## [0.1.0] - 2026-08-27
 

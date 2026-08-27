@@ -32,7 +32,7 @@ $arabic-word-production Create an Arabic-first Word document, then audit its RTL
 
 <div dir="rtl">
 
-قبل ما الـRepository يبقى Public، استخدم نفس الطلب مع مسار المجلد المحلي بدل رابط GitHub.
+رابط GitHub العام أعلاه هو مصدر التثبيت الأساسي. ولو عندك نسخة محلية بالفعل، استخدم خطوات تثبيت الـStandalone Skill اليدوية بالأسفل.
 
 ### تثبيت Standalone Skill يدويًا
 

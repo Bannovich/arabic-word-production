@@ -154,6 +154,17 @@ UNFINISHED_PATTERNS = (
     re.compile(r"\byour[-_ ](?:name|email|url)[-_ ]here\b", re.IGNORECASE),
 )
 
+STALE_PUBLICATION_PATTERNS = (
+    (
+        "README.md",
+        re.compile(r"\bUntil the repository " + r"is public\b", re.IGNORECASE),
+    ),
+    (
+        "README.ar.md",
+        re.compile(r"قبل ما الـRepository يبقى " + r"Public", re.IGNORECASE),
+    ),
+)
+
 
 def _finding(category: str, path: str, detail: str) -> dict[str, str]:
     return {"category": category, "path": path, "detail": detail}
@@ -187,6 +198,18 @@ def _scan_text(text: str, relative_path: str) -> list[dict[str, str]]:
     if any(pattern.search(text) for pattern in UNFINISHED_PATTERNS):
         findings.append(
             _finding("unfinished-placeholder", relative_path, "unfinished scaffold marker detected")
+        )
+
+    if any(
+        relative_path == expected_path and pattern.search(text)
+        for expected_path, pattern in STALE_PUBLICATION_PATTERNS
+    ):
+        findings.append(
+            _finding(
+                "stale-publication-state",
+                relative_path,
+                "private-to-public transition wording detected",
+            )
         )
 
     if any(not _allowed_email(match.group(0)) for match in EMAIL_RE.finditer(text)):

@@ -119,6 +119,16 @@ class PublicationCheckerTests(unittest.TestCase):
         (self.root / "NOTICE").unlink()
         self.assert_category(self.scan(), "required-path-missing")
 
+    def test_english_private_visibility_scaffold_language_is_reported(self) -> None:
+        stale_text = "Until the repository " + "is public, use the local folder."
+        (self.root / "README.md").write_text(stale_text, encoding="utf-8")
+        self.assert_category(self.scan(), "stale-publication-state")
+
+    def test_arabic_private_visibility_scaffold_language_is_reported(self) -> None:
+        stale_text = "قبل ما الـRepository يبقى " + "Public، استخدم المجلد المحلي."
+        (self.root / "README.ar.md").write_text(stale_text, encoding="utf-8")
+        self.assert_category(self.scan(), "stale-publication-state")
+
     def test_chat_conversation_reference_is_reported(self) -> None:
         scheme = "chatgpt" + "-conversation://"
         (self.root / "notes.md").write_text(scheme + "private-reference", encoding="utf-8")
