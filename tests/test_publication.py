@@ -173,6 +173,15 @@ class PublicationCheckerTests(unittest.TestCase):
         write_docx(self.root / "fixture.docx")
         self.assertTrue(self.scan()["ok"])
 
+    def test_pep639_license_expression_does_not_repeat_legacy_classifier(self) -> None:
+        pyproject = (REPOSITORY_ROOT / "pyproject.toml").read_text(encoding="utf-8")
+        self.assertIn('license = "Apache-2.0"', pyproject)
+        self.assertNotIn(
+            '"License :: OSI Approved :: Apache Software License"',
+            pyproject,
+            "Setuptools 77+ rejects a PEP 639 license expression combined with the legacy license classifier",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
