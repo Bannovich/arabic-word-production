@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "project": "arabic-word-production",
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "generated_at_utc": "2026-08-27T13:37:26Z",
+  "license": "Apache-2.0",
+  "candidate": {
+    "repository": "Bannovich/arabic-word-production",
+    "visibility_at_validation": "private",
+    "commit": "66d5d4fd123b7fb6c76049a5e65ce743e0e86a17",
+    "tree": "2366278f06ed615f9e9d12cf103ee869aa9e6969",
+    "local_source_commit": "78a58763da95e1debe353e2bb0dbe6f0d82cb148",
+    "local_tree": "2366278f06ed615f9e9d12cf103ee869aa9e6969",
+    "tree_parity": true,
+    "tracked_files": 51,
+    "blob_sha_mismatches": 0,
+    "history_policy": "GitHub received a clean publication history; local development commits and machine-specific historical paths were not uploaded.",
+    "release_tag_target_policy": "The release tag points to the evidence commit whose parent is candidate.commit; the only tree delta is this evidence file."
+  },
+  "environment": {
+    "operating_system": "Windows 25H2 x64",
+    "operating_system_version": "10.0.26200.0",
+    "operating_system_build": "26200.9168",
+    "python": "3.12.13",
+    "microsoft_word": "16.0.20326.20100"
+  },
+  "dependencies": {
+    "python_docx": "1.2.0",
+    "lxml": "6.1.1",
+    "pillow": "12.3.0",
+    "pyyaml": "6.0.3",
+    "setuptools_package_build": "84.0.0"
+  },
+  "validation": {
+    "publication_checker": {
+      "passed": true,
+      "tracked_candidate_files": 51,
+      "docx_files": 1,
+      "findings": 0
+    },
+    "publication_and_packaging_policy_tests": {
+      "passed": true,
+      "tests": 12
+    },
+    "skill_tests": {
+      "passed": true,
+      "tests": 21
+    },
+    "official_skill_validator": {
+      "passed": true
+    },
+    "official_plugin_validator": {
+      "passed": true
+    },
+    "github_yaml_parse": {
+      "passed": true,
+      "files": 7
+    },
+    "markdown_local_links": {
+      "passed": true,
+      "markdown_files": 24,
+      "local_links": 25,
+      "broken_links": 0
+    },
+    "canonical_skill_copy": {
+      "passed": true,
+      "source_files": 17,
+      "packaged_files": 17,
+      "hash_differences": 0
+    },
+    "apache_license_sha256": "C71D239DF91726FC519C6EB72D318EC65820627232B2F796219E87DCF35D0AB4",
+    "python_wheel_build": {
+      "passed": true,
+      "wheel": "arabic_word_production-0.1.0-py3-none-any.whl",
+      "sha256": "D8B7E3BAE3067730B321F0A7AF2541E8F33CA7ED09D023F879BBD2FF237B8352",
+      "published_as_release_asset": false
+    }
+  },
+  "github_actions": {
+    "workflow": "Quality",
+    "run_id": 33077635694,
+    "run_url": "https://github.com/Bannovich/arabic-word-production/actions/runs/33077635694",
+    "result": "success",
+    "jobs_passed": 6,
+    "jobs_total": 6,
+    "matrix": {
+      "operating_systems": [
+        "ubuntu-latest",
+        "windows-latest"
+      ],
+      "python_versions": [
+        "3.10",
+        "3.12",
+        "3.13"
+      ]
+    },
+    "private_gate_failure_recovered": {
+      "failed_run_id": 33077163486,
+      "failure_stage": "Install dependencies",
+      "root_cause": "Setuptools 77+ rejects a PEP 639 license expression when the legacy Apache license classifier is also present.",
+      "resolution": "Removed the superseded classifier while retaining license = Apache-2.0 and added a regression test for this metadata policy.",
+      "regression_test": "test_pep639_license_expression_does_not_repeat_legacy_classifier"
+    }
+  },
+  "synthetic_docx_smoke": {
+    "passed": true,
+    "route": "COMPLEX",
+    "elapsed_seconds": 0.283,
+    "builds": 1,
+    "repairs": 0,
+    "fallbacks": 0,
+    "qa_failures": [],
+    "reopen_stable": true,
+    "content_model_checked": true,
+    "fixture_sha256": "EB2326E23A1973C900C4D533DACCA0367475824FA164901F2C2A6A1D0F0BA66B",
+    "word_roundtrip_sha256": "97431A6572150059FDA2C543AE9B53AC34B41DBB5E3DBD1DA1661166D5E7CAA7",
+    "word_roundtrip_audit_sha256": "EBE390449E1C7EED46D40AF06AE99123BDD30A9FAB127A0E0958DDD89E9C25AE",
+    "fixture_published": false,
+    "metrics_before_word": {
+      "paragraphs": 50,
+      "arabic_or_mixed_paragraphs": 22,
+      "style_inherited_rtl_paragraphs": 0,
+      "tables": 2,
+      "sections": 3,
+      "header_parts": 3,
+      "footer_parts": 3,
+      "page_field_footers": 3,
+      "stable_page_footers": 3,
+      "inline_images": 1,
+      "floating_images": 0,
+      "media_entries": 1
+    },
+    "metrics_after_word": {
+      "paragraphs": 50,
+      "arabic_or_mixed_paragraphs": 22,
+      "style_inherited_rtl_paragraphs": 25,
+      "tables": 2,
+      "sections": 3,
+      "header_parts": 3,
+      "footer_parts": 3,
+      "page_field_footers": 3,
+      "stable_page_footers": 3,
+      "inline_images": 1,
+      "floating_images": 0,
+      "media_entries": 1
+    },
+    "word_normalization": "Word moved some effective RTL direction from direct paragraph properties to explicit paragraph-style inheritance. The effective-direction auditor accepted the normalized structure with zero findings; all other reported metrics remained unchanged."
+  },
+  "renderer": {
+    "name": "Documents renderer using LibreOffice or soffice",
+    "available": false,
+    "all_pages_rendered_to_images": false,
+    "reason": "LibreOffice or soffice was not installed in the validation environment."
+  },
+  "word_desktop": {
+    "tested": true,
+    "version": "16.0.20326.20100",
+    "pages": 3,
+    "opened_without_document_warning": true,
+    "mixed_rtl_ltr": "passed",
+    "rtl_three_column_table": "passed",
+    "rtl_six_column_landscape_table": "passed",
+    "inline_image_and_caption": "passed",
+    "portrait_landscape_portrait_sections": "passed",
+    "page_and_numpages_fields": "passed",
+    "save_as_roundtrip": "passed",
+    "closed_and_reopened": "passed",
+    "roundtrip_structural_audit": "passed",
+    "roundtrip_findings": 0
+  },
+  "not_verified": [
+    "Microsoft Word Desktop on macOS",
+    "Word Online",
+    "Google Docs import and export",
+    "LibreOffice Writer rendering",
+    "Other Agent Skills hosts",
+    "Universal OpenAI Plugins Directory distribution"
+  ],
+  "limitations": [
+    "This evidence applies only to the named commits, operating systems, versions, fixture, and validation surfaces.",
+    "Structural auditing and one Word Desktop build do not prove identical rendering in every Word build or third-party office suite.",
+    "The routine sub-two-minute target is a performance goal, not a fixed guarantee and never permission to skip quality gates."
+  ]
+}
