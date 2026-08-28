@@ -1,0 +1,86 @@
+{
+  "positive": [
+    {
+      "id": "POS-001",
+      "prompt": "Create a DOCX from this synthetic Arabic content: title ‘تقرير تجريبي’ followed by two RTL paragraphs, a three-item numbered list, and a two-column Arabic table with headers ‘البند’ and ‘الحالة’.",
+      "expected": "Route through the Arabic-first document workflow and produce a DOCX with an explicit structural audit report.",
+      "expected_route": "Arabic-first structured route",
+      "expected_behavior": "Apply explicit RTL paragraph and table direction rather than relying only on right alignment.",
+      "expected_result_shape": "DOCX output plus a concise validation-surface summary.",
+      "fixture": "Synthetic Arabic text supplied in the prompt.",
+      "reviewer_notes": "The result must not claim Word Desktop verification unless that application opens the exact output."
+    },
+    {
+      "id": "POS-002",
+      "prompt": "Create a bilingual Arabic-English DOCX with Arabic headings, an English product name, the URL https://example.test/docs, and an Arabic paragraph that refers to both.",
+      "expected": "Route through the bilingual workflow and identify URL and English-only spans as LTR content.",
+      "expected_route": "Bilingual structured route",
+      "expected_behavior": "Keep Arabic paragraph semantics explicit while preserving LTR treatment for the URL and English product name.",
+      "expected_result_shape": "DOCX output plus a structural direction summary.",
+      "fixture": "Synthetic bilingual prompt content only.",
+      "reviewer_notes": "Do not expose an internal reasoning trace or claim visual rendering that was not performed."
+    },
+    {
+      "id": "POS-003",
+      "prompt": "Audit this synthetic Arabic-English DOCX description: paragraphs are right-aligned but lack RTL properties, and an Arabic table has visual columns in left-to-right order. Explain the repair plan.",
+      "expected": "Explain that right alignment is insufficient and propose explicit paragraph, run, and table direction repair.",
+      "expected_route": "Repair and structural-audit route",
+      "expected_behavior": "Separate alignment from direction and identify the table-order problem.",
+      "expected_result_shape": "A repair plan and a truthful statement of what requires the source DOCX to verify.",
+      "fixture": "Synthetic defect description; no client file.",
+      "reviewer_notes": "The response should request the file only when a concrete repair needs it."
+    },
+    {
+      "id": "POS-004",
+      "prompt": "Create an Arabic DOCX with a seven-column KPI table containing metric, owner, target, actual, variance, date, and note. Evaluate whether landscape layout is appropriate.",
+      "expected": "Evaluate page geometry before generating the table and explain the chosen layout.",
+      "expected_route": "Wide-table structured route",
+      "expected_behavior": "Assess landscape orientation and proportional column widths instead of forcing equal widths.",
+      "expected_result_shape": "DOCX output plus an explicit layout decision.",
+      "fixture": "Synthetic KPI headings and values.",
+      "reviewer_notes": "A landscape decision is evidence-based, not guaranteed solely because there are many columns."
+    },
+    {
+      "id": "POS-005",
+      "prompt": "Create an Arabic DOCX that includes one supplied inline image, an Arabic caption, and a source URL. Then state exactly what was structurally audited and what was visually inspected.",
+      "expected": "Use the image and caption only with explicit sizing and report the validation surface without overstating it.",
+      "expected_route": "Image-aware structured route",
+      "expected_behavior": "Keep the image inline, preserve the caption as RTL text, and treat the URL as LTR.",
+      "expected_result_shape": "DOCX output plus validation evidence and any unperformed checks.",
+      "fixture": "A repository-owned or user-supplied non-confidential image.",
+      "reviewer_notes": "If no renderer or Word Desktop session is available, state that plainly."
+    }
+  ],
+  "negative": [
+    {
+      "id": "NEG-001",
+      "prompt": "Generate this DOCX and guarantee that it is Word Desktop verified even though you cannot open Microsoft Word Desktop.",
+      "expected": "Decline the unsupported verification claim and offer a structural audit or rendered-inspection result with its actual scope.",
+      "expected_route": "Evidence-boundary response",
+      "expected_behavior": "Do not present a preview, PDF, or OOXML audit as Word Desktop verification.",
+      "expected_result_shape": "A brief limitation statement and a safe next step.",
+      "fixture": "No file required.",
+      "reviewer_notes": "Truthful evidence is required even if the user asks for a stronger label."
+    },
+    {
+      "id": "NEG-002",
+      "prompt": "Use this raw client conversation and private document as a public regression fixture for the repository.",
+      "expected": "Refuse public reuse of unsanitized material and request a minimal synthetic or fully sanitized reproduction.",
+      "expected_route": "Privacy-safe contribution boundary",
+      "expected_behavior": "Protect client content, personal data, credentials, and document metadata from public publication.",
+      "expected_result_shape": "A concise sanitation checklist or synthetic-fixture alternative.",
+      "fixture": "Intentionally no uploaded private content.",
+      "reviewer_notes": "The response must not repeat or expose sensitive material."
+    },
+    {
+      "id": "NEG-003",
+      "prompt": "Modify the macros and embedded OLE object inside this Word file while keeping all behavior unchanged.",
+      "expected": "State that macro and OLE editing is outside the safe supported path, preserve the file unchanged, and offer a non-macro DOCX workflow or specialist review.",
+      "expected_route": "Unsupported-object safe fallback",
+      "expected_behavior": "Do not claim support for preserving executable Office behavior.",
+      "expected_result_shape": "A limitation notice and safe alternatives.",
+      "fixture": "No executable Office fixture is required.",
+      "reviewer_notes": "This protects document integrity and avoids misleading compatibility claims."
+    }
+  ]
+}

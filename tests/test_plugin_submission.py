@@ -146,7 +146,8 @@ class PluginSubmissionCheckerTests(unittest.TestCase):
         self.assert_category(self.scan(), "reviewer-tests-invalid")
 
     def test_unfinished_placeholder_is_rejected(self) -> None:
-        self.write_text("submission/listing.en.md", "[TODO: write listing]")
+        marker = "[" + "TODO" + ": write listing]"
+        self.write_text("submission/listing.en.md", marker)
         self.assert_category(self.scan(), "unfinished-placeholder")
 
     def test_digital_commerce_language_is_rejected_without_echoing_text(self) -> None:

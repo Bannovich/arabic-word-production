@@ -48,6 +48,12 @@ $arabic-word-production Create an Arabic-first Word document, then audit its RTL
 
 الإصدار الحالي يحتوي على الـSkill فقط، ولا يحتاج MCP server أو ربط حساب خارجي.
 
+## Plugin Directory
+
+المشروع بيجهّز Candidate من نوع **skills-only** للـpublic Plugin Directory، لكنه ليس معتمدًا أو ظاهرًا هناك حتى الآن. الـCandidate لا يحتوي على MCP server أو ربط حساب أو خدمة يديرها المشروع أو Telemetry أو Checkout أو Subscription.
+
+راجع [Privacy Policy](https://bannovich.github.io/arabic-word-production/privacy-policy/) و[Terms of Service](https://bannovich.github.io/arabic-word-production/terms-of-service/) و[حدود التقديم](https://bannovich.github.io/arabic-word-production/plugin-directory-submission/) لمعرفة النطاق بدقة. قبل أن يصبح الـPlugin عامًا، يلزم أن ينفّذ الناشر بنفسه أي Identity Verification وPolicy Attestations وخطوة review/publish النهائية التي يطلبها الـhost.
+
 ## البرامج وطرق الاستخدام المدعومة
 
 | المكان | الاستخدام | حالة `v0.1.0` |
