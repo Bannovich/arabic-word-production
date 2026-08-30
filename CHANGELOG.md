@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - A public contribution path for future sanitized RTL failures and reusable guardrails.
 - A publication guardrail that rejects stale private-to-public transition wording in both READMEs.
+- Plugin Directory-ready public metadata, policy pages, reviewed identity assets, and a privacy-safe submission contract checker.
+- Five positive and three negative synthetic reviewer cases for the initial skills-only directory candidate.
 
 ### Fixed
 
