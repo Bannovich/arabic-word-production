@@ -38,6 +38,12 @@ This repository is already packaged as a plugin through `.codex-plugin/plugin.js
 
 The plugin package contains only the Skill in this release; it does not require an MCP server or external account connection.
 
+## Plugin Directory
+
+The project is preparing a **skills-only** candidate for the public Plugin Directory. It is not listed or approved there yet. The intended listing has no MCP server, account connection, project-operated service, telemetry, checkout, or subscription.
+
+The public [Privacy Policy](https://bannovich.github.io/arabic-word-production/privacy-policy/), [Terms of Service](https://bannovich.github.io/arabic-word-production/terms-of-service/), and [submission boundary](https://bannovich.github.io/arabic-word-production/plugin-directory-submission/) describe its scope. Before an actual public listing, the publisher must personally complete any identity verification, policy attestations, and final review/publish actions required by the host.
+
 ## Supported ways to use it
 
 | Surface | Use | Status in `v0.1.0` |

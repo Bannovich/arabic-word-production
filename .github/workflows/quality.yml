@@ -36,6 +36,9 @@ jobs:
       - name: Check publication structure and privacy
         run: python scripts/check_publication.py .
 
+      - name: Check Plugin Directory submission contract
+        run: python scripts/check_plugin_submission.py .
+
       - name: Run publication tests
         run: python -m unittest discover -s tests -v
 
