@@ -1,0 +1,11 @@
+# Keep source artifacts reproducible across Windows, macOS, and Linux clones.
+* text=auto eol=lf
+
+# Office packages and image assets must remain byte-for-byte binary.
+*.docx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.zip binary

@@ -20,6 +20,7 @@ from typing import Iterable
 
 REQUIRED_PATHS = (
     ".codex-plugin/plugin.json",
+    ".gitattributes",
     ".github/CODEOWNERS",
     ".github/ISSUE_TEMPLATE/config.yml",
     ".github/ISSUE_TEMPLATE/image-object.yml",

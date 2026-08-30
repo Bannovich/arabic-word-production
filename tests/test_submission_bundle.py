@@ -68,6 +68,12 @@ class SubmissionBundleTests(unittest.TestCase):
         self.assertEqual(first["bundles"]["skill"]["sha256"], second["bundles"]["skill"]["sha256"])
         self.assertEqual(first["bundles"]["plugin"]["sha256"], second["bundles"]["plugin"]["sha256"])
 
+    def test_repository_pins_text_line_endings_for_clean_checkout_reproducibility(self) -> None:
+        attributes = (REPOSITORY_ROOT / ".gitattributes").read_text(encoding="utf-8")
+        self.assertIn("* text=auto eol=lf", attributes)
+        self.assertIn("*.docx binary", attributes)
+        self.assertIn("*.png binary", attributes)
+
 
 if __name__ == "__main__":
     unittest.main()
