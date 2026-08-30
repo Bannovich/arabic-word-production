@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - A publication guardrail that rejects stale private-to-public transition wording in both READMEs.
 - Plugin Directory-ready public metadata, policy pages, reviewed identity assets, and a privacy-safe submission contract checker.
 - Five positive and three negative synthetic reviewer cases for the initial skills-only directory candidate.
+- Deterministic Skill and plugin ZIP builders with stable inventories and SHA-256 digests.
+- A disposable local marketplace workflow that was validated and installed through the Codex CLI without modifying the personal marketplace file.
 
 ### Fixed
 
