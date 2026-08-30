@@ -53,6 +53,8 @@ REQUIRED_PATHS = (
     "docs/release-process.md",
     "docs/terms-of-service.md",
     "pyproject.toml",
+    "release-evidence/plugin-directory-candidate.json",
+    "release-evidence/plugin-directory-publication.json",
     "scripts/check_publication.py",
     "scripts/check_plugin_submission.py",
     "scripts/generate_plugin_assets.py",

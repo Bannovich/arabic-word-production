@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-08-30",
+  "candidate": {
+    "validated_parent_commit": "d4b8c2d3330ba9f0df86cf0e25ed104d3183a962",
+    "evidence_commit": "b91fee2a0a67aecc20356b2f3bb6a64bd276141d",
+    "package_version": "0.1.0",
+    "submission_type": "skills-only",
+    "license": "Apache-2.0"
+  },
+  "github_publication": {
+    "repository": "https://github.com/Bannovich/arabic-word-production",
+    "pull_request": {
+      "number": 3,
+      "url": "https://github.com/Bannovich/arabic-word-production/pull/3",
+      "merged": true,
+      "merge_commit": "305ef85c73253eaaa654f67fa1ed6e0f2eedace8",
+      "merged_tree_matches_evidence_tree": true
+    },
+    "quality_workflow": {
+      "run_id": 33324236423,
+      "name": "Quality",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs_passed": 6,
+      "jobs_failed": 0,
+      "matrix": [
+        "windows-latest / Python 3.10",
+        "windows-latest / Python 3.12",
+        "windows-latest / Python 3.13",
+        "ubuntu-latest / Python 3.10",
+        "ubuntu-latest / Python 3.12",
+        "ubuntu-latest / Python 3.13"
+      ]
+    }
+  },
+  "github_pages": {
+    "source_branch": "main",
+    "source_path": "/docs",
+    "https_enforced": true,
+    "deployment_run_id": 33326999649,
+    "pages": [
+      {
+        "url": "https://bannovich.github.io/arabic-word-production/",
+        "http_status": 200,
+        "title": "Arabic Word Production | Public project and plugin-directory information for Arabic-first Word production.",
+        "h1": "Arabic Word Production"
+      },
+      {
+        "url": "https://bannovich.github.io/arabic-word-production/privacy-policy/",
+        "http_status": 200,
+        "title": "Privacy Policy | Arabic Word Production",
+        "h1": "Privacy Policy"
+      },
+      {
+        "url": "https://bannovich.github.io/arabic-word-production/terms-of-service/",
+        "http_status": 200,
+        "title": "Terms of Service | Arabic Word Production",
+        "h1": "Terms of Service"
+      }
+    ]
+  },
+  "local_plugin": {
+    "plugin_id": "arabic-word-production@arabic-word-production-local",
+    "version": "0.1.0",
+    "installed": true,
+    "enabled": true,
+    "installed_source_commit": "d4b8c2d3330ba9f0df86cf0e25ed104d3183a962",
+    "fresh_task_invocation_tested": false
+  },
+  "openai_portal_state": {
+    "developer_identity_action_attempted": false,
+    "policy_attestations_attempted": false,
+    "submit_for_review_attempted": false,
+    "publish_attempted": false
+  },
+  "remaining_user_gates": [
+    "Invoke the installed plugin in a fresh task.",
+    "Complete any required developer identity verification.",
+    "Review and accept current policy attestations.",
+    "Confirm the final Submit for Review action.",
+    "After approval, confirm the final Publish action."
+  ]
+}

@@ -11,6 +11,10 @@ Its public source of truth is the [GitHub repository](https://github.com/Bannovi
 
 Directory listing metadata, reviewer cases, and release material are versioned in the repository. Reviewers and users should rely on the validation surface stated for each output instead of assuming universal Word compatibility.
 
+## Public publication checkpoint
+
+The reviewed readiness Pull Request, CI matrix result, and live GitHub Pages checks are recorded separately in [`release-evidence/plugin-directory-publication.json`](../release-evidence/plugin-directory-publication.json). Keeping that record separate preserves the candidate bundle digests and the immutable pre-publication evidence convention.
+
 ## Disposable local marketplace
 
 Maintainers can build a temporary marketplace without editing a personal marketplace or Codex settings:
