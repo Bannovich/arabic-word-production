@@ -2,7 +2,7 @@
 
 ## Required gate sequence
 
-Before a new environment is used for production work, run `scripts/check_environment.py`. It is read-only: it reports required Python modules, optional renderers, and whether Word Desktop is detectable. A detected Word Desktop installation is not proof that any output has been opened or verified there.
+Before a new environment is used for production work, run `scripts/check_environment.py`. It is read-only: it reports required Python modules (`docx`, `lxml`, `PIL`), optional renderers, and whether Word Desktop is detectable. A detected Word Desktop installation is not proof that any output has been opened or verified there.
 
 1. **Content:** Compare headings, paragraphs, list items, table cells, links, captions, and images to the source model. Reject placeholders and internal citation tokens.
 2. **Structure:** Run `scripts/audit_docx.py output.docx --model model.json`. Confirm content completeness, explicit paragraph direction, logical-start alignment, run exceptions, table RTL order, sections, stable page fields, disabled update-on-open behavior, media, and package validity.

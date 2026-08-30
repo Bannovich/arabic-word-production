@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Callable
 
 
-REQUIRED_MODULES = ("docx", "lxml")
+REQUIRED_MODULES = ("docx", "lxml", "PIL")
 OPTIONAL_RENDERERS = ("soffice",)
 
 
@@ -50,9 +50,10 @@ def inspect_environment(
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Inspect Arabic Word Production prerequisites")
     parser.parse_args(argv)
-    json.dump(inspect_environment(), sys.stdout, ensure_ascii=False, indent=2)
+    result = inspect_environment()
+    json.dump(result, sys.stdout, ensure_ascii=False, indent=2)
     sys.stdout.write("\n")
-    return 0
+    return 0 if result["ready_for_structural_route"] else 1
 
 
 if __name__ == "__main__":

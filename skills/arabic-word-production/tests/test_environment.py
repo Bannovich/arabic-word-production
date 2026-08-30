@@ -29,20 +29,20 @@ class EnvironmentDiagnosticTests(unittest.TestCase):
         )
 
     def test_all_required_modules_are_reported_as_available(self) -> None:
-        result = self.inspect({"docx", "lxml"}, {"soffice"})
+        result = self.inspect({"docx", "lxml", "PIL"}, {"soffice"})
         self.assertTrue(result["ready_for_structural_route"])
         self.assertEqual([], result["missing_required_modules"])
         self.assertTrue(result["optional_renderers"]["soffice"])
         self.assertFalse(result["word_desktop_available"])
 
     def test_one_required_module_missing_blocks_structural_route(self) -> None:
-        result = self.inspect({"docx"}, set())
+        result = self.inspect({"docx", "PIL"}, set())
         self.assertFalse(result["ready_for_structural_route"])
         self.assertEqual(["lxml"], result["missing_required_modules"])
         self.assertFalse(result["optional_renderers"]["soffice"])
 
     def test_word_desktop_status_is_reported_independently(self) -> None:
-        result = self.inspect({"docx", "lxml"}, set(), word_available=True)
+        result = self.inspect({"docx", "lxml", "PIL"}, set(), word_available=True)
         self.assertTrue(result["word_desktop_available"])
         self.assertTrue(result["ready_for_structural_route"])
 
