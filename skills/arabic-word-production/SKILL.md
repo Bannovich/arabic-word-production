@@ -9,7 +9,7 @@ description: Use when creating or repairing Microsoft Word DOCX files that are A
 
 Treat alignment, paragraph direction, run direction, table order, and page geometry as separate properties. A right-aligned paragraph is not necessarily RTL, and a correct preview is not proof of Microsoft Word Desktop behavior. In WordprocessingML, use logical `w:jc=start` for the normal leading edge: with `w:bidi=1` Word displays it on the visual right, while `right` or `end` can display an RTL paragraph on the visual left.
 
-**REQUIRED SUB-SKILL:** Use `documents:documents` for the general DOCX creation/editing and render-inspection workflow. Use this skill for the Arabic/mixed-language decisions and its deterministic fast-path tools.
+**PREFERRED SUB-SKILL:** When it is available, use `documents:documents` for general DOCX creation/editing and render inspection. Use this skill for the Arabic/mixed-language decisions and its deterministic fast-path tools. When it is unavailable, run `scripts/check_environment.py` and use the available deterministic builder, auditor, and honest validation labels.
 
 ## Route the request
 
