@@ -37,6 +37,10 @@ regression-output/
 audit.json
 ~$*
 
+# Keep the small, deterministic assets referenced by the plugin manifest.
+!assets/
+!assets/*.png
+
 # Keep the canonical bundled template
 !skills/arabic-word-production/assets/arabic-word-template.docx
 
