@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-08-30",
+  "candidate": {
+    "repository": "https://github.com/Bannovich/arabic-word-production",
+    "branch": "plugin-readiness-v0.2.0",
+    "validated_parent_commit": "d4b8c2d3330ba9f0df86cf0e25ed104d3183a962",
+    "package_version": "0.1.0",
+    "submission_type": "skills-only",
+    "license": "Apache-2.0"
+  },
+  "official_documentation_refresh": {
+    "date": "2026-08-30",
+    "sources": [
+      "https://developers.openai.com/plugins/build/plugins",
+      "https://developers.openai.com/plugins/deploy/submission",
+      "https://developers.openai.com/plugins/deploy/submission-errors",
+      "https://developers.openai.com/plugins/app-guidelines"
+    ],
+    "result": "candidate limits and submission materials remain aligned"
+  },
+  "verification": {
+    "repository_tests": {
+      "passed": 34,
+      "failed": 0,
+      "elapsed_seconds": 2.519
+    },
+    "skill_tests": {
+      "passed": 24,
+      "failed": 0,
+      "elapsed_seconds": 2.182,
+      "includes_synthetic_build_audit_and_reopen": true
+    },
+    "publication_checker": {
+      "ok": true,
+      "files_scanned": 83,
+      "docx_scanned": 1,
+      "finding_count": 0
+    },
+    "submission_checker": {
+      "ok": true,
+      "finding_count": 0
+    },
+    "official_skill_validator": "passed",
+    "official_plugin_validator": "passed"
+  },
+  "environment": {
+    "python_version": "3.12.13",
+    "required_modules": {
+      "docx": true,
+      "lxml": true,
+      "PIL": true
+    },
+    "soffice_detected": false,
+    "word_desktop_detected": true,
+    "word_desktop_tested_in_this_candidate_run": false,
+    "rendered_and_inspected_in_this_candidate_run": false
+  },
+  "bundles": {
+    "skill": {
+      "filename": "arabic-word-production-skill.zip",
+      "member_count": 18,
+      "bytes": 68277,
+      "sha256": "9d2470f3dd42a9da02220038e4ef2317b1893b75f528eb1ef0e3f6ea5462ca51",
+      "crc_check": "passed"
+    },
+    "plugin": {
+      "filename": "arabic-word-production-plugin.zip",
+      "member_count": 77,
+      "bytes": 172709,
+      "sha256": "5bbbe62e077915bb767955ed13642c793e10784659c4139c023d2538494aad50",
+      "crc_check": "passed"
+    },
+    "clean_checkout_reproducibility": {
+      "independent_checkouts_compared": 2,
+      "skill_sha256_match": true,
+      "plugin_sha256_match": true
+    }
+  },
+  "local_marketplace": {
+    "exact_candidate_copy_built": true,
+    "files_copied": 77,
+    "catalog_name": "arabic-word-production-local",
+    "catalog_validation": "passed",
+    "copied_plugin_validation": "passed",
+    "codex_installation_smoke_test": {
+      "installed": true,
+      "enabled": true,
+      "plugin_id": "arabic-word-production@arabic-word-production-local",
+      "version": "0.1.0",
+      "installed_source_commit": "d4b8c2d3330ba9f0df86cf0e25ed104d3183a962",
+      "fresh_task_invocation_tested": false,
+      "note": "A fresh Codex task is required to load the newly installed Skill."
+    }
+  },
+  "public_and_portal_state": {
+    "readiness_branch_pushed": false,
+    "pull_request_created": false,
+    "github_pages_urls_verified_public": false,
+    "developer_identity_action_attempted": false,
+    "policy_attestations_attempted": false,
+    "submit_for_review_attempted": false,
+    "publish_attempted": false
+  }
+}
