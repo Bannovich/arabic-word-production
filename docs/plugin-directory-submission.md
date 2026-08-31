@@ -13,7 +13,15 @@ Directory listing metadata, reviewer cases, and release material are versioned i
 
 ## Public publication checkpoint
 
-The reviewed readiness Pull Request, CI matrix result, and live GitHub Pages checks are recorded separately in [`release-evidence/plugin-directory-publication.json`](../release-evidence/plugin-directory-publication.json). Keeping that record separate preserves the candidate bundle digests and the immutable pre-publication evidence convention.
+The reviewed readiness Pull Request, CI matrix result, and live GitHub Pages checks are recorded separately in [`release-evidence/plugin-directory-publication.json`](https://github.com/Bannovich/arabic-word-production/blob/main/release-evidence/plugin-directory-publication.json). Keeping that record separate preserves the candidate bundle digests and the immutable pre-publication evidence convention.
+
+## Fresh-task functional checkpoint
+
+The installed `0.1.0` candidate was invoked through its plugin-qualified Skill in a separate clean-room Codex task. The synthetic COMPLEX document passed the original structural audit, an independent reopen audit, all 14 supplemental feature checks, and an accessibility audit with no findings. The installed plugin's 77 files matched the recorded candidate bundle with no mismatches.
+
+The timing result is intentionally split. The deterministic document pipeline took `0.695435` seconds from model preparation through final audit, but the complete task turn took `767.617` seconds. The user-visible sub-two-minute target was therefore **not met**; pipeline-only timing must not be presented as end-to-end latency.
+
+LibreOffice was unavailable, so the attempted render produced no pages for visual inspection. Word Desktop was detected but was not opened or tested. The supported claim for this checkpoint is structural and accessibility validation only. The privacy-safe machine-readable record is [`release-evidence/plugin-directory-fresh-task-smoke.json`](https://github.com/Bannovich/arabic-word-production/blob/main/release-evidence/plugin-directory-fresh-task-smoke.json).
 
 ## Disposable local marketplace
 

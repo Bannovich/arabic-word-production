@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Deterministic Skill and plugin ZIP builders with stable inventories and SHA-256 digests.
 - A disposable local marketplace workflow that was validated and installed through the Codex CLI without modifying the personal marketplace file.
 - A post-publication checkpoint recording the merged readiness Pull Request, six passing CI jobs, and live GitHub Pages policy URLs.
+- A privacy-safe fresh-task smoke-test record proving plugin-qualified activation, exact candidate-file matching, structural and accessibility QA, reopen stability, and the unavailable visual-validation surface.
+- A publication guardrail that distinguishes complete task-turn latency from pipeline-only timing and rejects impossible renderer claims.
 
 ### Fixed
 
