@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-08-31",
+  "candidate": {
+    "validated_parent_commit": "d4b8c2d3330ba9f0df86cf0e25ed104d3183a962",
+    "evidence_commit": "b91fee2a0a67aecc20356b2f3bb6a64bd276141d",
+    "package_version": "0.1.0",
+    "submission_type": "skills-only",
+    "license": "Apache-2.0",
+    "plugin_id": "arabic-word-production@arabic-word-production-local",
+    "qualified_skill_name": "arabic-word-production:arabic-word-production"
+  },
+  "fresh_task": {
+    "passed": true,
+    "clean_room": true,
+    "route": "COMPLEX",
+    "synthetic_only": true,
+    "source_repository_worktree_used": false,
+    "plugin_runtime_matches_installed_copy": true,
+    "installed_plugin_files": 77,
+    "candidate_bundle_files": 77,
+    "candidate_bundle_file_mismatches": 0
+  },
+  "timing": {
+    "task_started_at": "2026-08-31T01:53:31Z",
+    "task_completed_at": "2026-08-31T02:06:19Z",
+    "task_turn_seconds": 767.617,
+    "model_preparation_seconds": 0.064414,
+    "build_seconds": 0.340262,
+    "pipeline_model_preparation_through_final_audit_seconds": 0.695435,
+    "agent_setup_and_reasoning_overhead_seconds": 766.921565,
+    "under_120_second_target": {
+      "task_turn": false,
+      "pipeline_only": true,
+      "user_visible_claim": "not-met"
+    }
+  },
+  "verification": {
+    "structural_finding_count": 0,
+    "reopen_finding_count": 0,
+    "supplemental_checks_passed": 14,
+    "supplemental_checks_total": 14,
+    "reopen_supplemental_checks_passed": 14,
+    "reopen_supplemental_checks_total": 14,
+    "metrics_identical_after_reopen": true,
+    "accessibility_findings": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "metrics": {
+      "paragraphs": 237,
+      "arabic_or_mixed_paragraphs": 234,
+      "tables": 2,
+      "sections": 3,
+      "header_parts": 3,
+      "footer_parts": 3,
+      "stable_page_field_footers": 3,
+      "inline_images": 1,
+      "floating_images": 0
+    }
+  },
+  "requested_feature_checks": [
+    "Arabic RTL title",
+    "Arabic RTL headings",
+    "Arabic RTL body",
+    "real RTL bullet numbering",
+    "mixed Arabic and English paragraph",
+    "LTR URL run inside an RTL paragraph",
+    "normal RTL table with explicit geometry",
+    "seven-column RTL landscape table with explicit geometry",
+    "portrait-landscape-portrait section sequence",
+    "repeating table headers",
+    "one inline image with Arabic alt text",
+    "adjacent Arabic image caption",
+    "centered LTR PAGE and NUMPAGES fields in every footer",
+    "update-on-open fields disabled"
+  ],
+  "artifact_integrity": {
+    "candidate_plugin_bundle_sha256": "5bbbe62e077915bb767955ed13642c793e10784659c4139c023d2538494aad50",
+    "generated_docx_sha256": "0f8ef37be3527e5191a8c5ec77f81c8a6ce75b39763cc209dc31b96aee2f6afc",
+    "synthetic_model_sha256": "48608ea98ec1c75fc799740224742301c904e9b92e45f43ca153c6bd13d1f9f7",
+    "independent_reopen_docx_sha256": "083b07cc398065243088236a7042fea28aaf13e4cb3adc44bc80601deda2e1ad",
+    "independent_reopen_byte_identical": false,
+    "independent_reopen_structurally_equivalent": true
+  },
+  "validation_surface": {
+    "renderer_attempted": true,
+    "renderer_available": false,
+    "renderer_failure_category": "soffice-unavailable",
+    "rendered_pages": 0,
+    "inspected_pages": 0,
+    "word_desktop_detected": true,
+    "word_desktop_tested": false,
+    "claim": "structural-and-accessibility-only"
+  },
+  "openai_portal_state": {
+    "developer_identity_action_attempted": false,
+    "policy_attestations_attempted": false,
+    "submit_for_review_attempted": false,
+    "publish_attempted": false
+  }
+}

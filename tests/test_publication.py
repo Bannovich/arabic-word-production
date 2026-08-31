@@ -47,6 +47,7 @@ REQUIRED_PATHS = (
     "docs/terms-of-service.md",
     "pyproject.toml",
     "release-evidence/plugin-directory-candidate.json",
+    "release-evidence/plugin-directory-fresh-task-smoke.json",
     "release-evidence/plugin-directory-publication.json",
     "scripts/check_publication.py",
     "scripts/check_plugin_submission.py",
@@ -122,6 +123,76 @@ class PublicationCheckerTests(unittest.TestCase):
             ),
             encoding="utf-8",
         )
+        (self.root / "release-evidence/plugin-directory-fresh-task-smoke.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "candidate": {
+                        "validated_parent_commit": "0" * 40,
+                        "evidence_commit": "1" * 40,
+                        "package_version": "0.1.0",
+                        "submission_type": "skills-only",
+                        "license": "Apache-2.0",
+                        "plugin_id": "arabic-word-production@arabic-word-production-local",
+                        "qualified_skill_name": "arabic-word-production:arabic-word-production",
+                    },
+                    "fresh_task": {
+                        "passed": True,
+                        "clean_room": True,
+                        "route": "COMPLEX",
+                        "synthetic_only": True,
+                        "source_repository_worktree_used": False,
+                        "plugin_runtime_matches_installed_copy": True,
+                        "installed_plugin_files": 77,
+                        "candidate_bundle_files": 77,
+                        "candidate_bundle_file_mismatches": 0,
+                    },
+                    "timing": {
+                        "task_turn_seconds": 100.0,
+                        "pipeline_model_preparation_through_final_audit_seconds": 1.0,
+                        "build_seconds": 0.5,
+                        "under_120_second_target": {
+                            "task_turn": True,
+                            "pipeline_only": True,
+                            "user_visible_claim": "met",
+                        },
+                    },
+                    "verification": {
+                        "structural_finding_count": 0,
+                        "reopen_finding_count": 0,
+                        "supplemental_checks_passed": 13,
+                        "supplemental_checks_total": 13,
+                        "reopen_supplemental_checks_passed": 13,
+                        "reopen_supplemental_checks_total": 13,
+                        "metrics_identical_after_reopen": True,
+                        "accessibility_findings": {"high": 0, "medium": 0, "low": 0},
+                    },
+                    "artifact_integrity": {
+                        "candidate_plugin_bundle_sha256": "2" * 64,
+                        "generated_docx_sha256": "3" * 64,
+                        "synthetic_model_sha256": "4" * 64,
+                        "independent_reopen_docx_sha256": "5" * 64,
+                        "independent_reopen_byte_identical": False,
+                        "independent_reopen_structurally_equivalent": True,
+                    },
+                    "validation_surface": {
+                        "renderer_attempted": True,
+                        "renderer_available": False,
+                        "rendered_pages": 0,
+                        "inspected_pages": 0,
+                        "word_desktop_tested": False,
+                        "claim": "structural-and-accessibility-only",
+                    },
+                    "openai_portal_state": {
+                        "developer_identity_action_attempted": False,
+                        "policy_attestations_attempted": False,
+                        "submit_for_review_attempted": False,
+                        "publish_attempted": False,
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
 
     def scan(self):
         return load_checker().scan_repository(self.root)
@@ -138,6 +209,65 @@ class PublicationCheckerTests(unittest.TestCase):
     def test_missing_required_file_is_reported(self) -> None:
         (self.root / "NOTICE").unlink()
         self.assert_category(self.scan(), "required-path-missing")
+
+    def test_fresh_task_evidence_requires_full_turn_timing(self) -> None:
+        path = self.root / "release-evidence/plugin-directory-fresh-task-smoke.json"
+        evidence = json.loads(path.read_text(encoding="utf-8"))
+        del evidence["timing"]["task_turn_seconds"]
+        path.write_text(json.dumps(evidence), encoding="utf-8")
+        self.assert_category(self.scan(), "fresh-task-evidence-invalid")
+
+    def test_fresh_task_evidence_rejects_pipeline_only_latency_claim(self) -> None:
+        path = self.root / "release-evidence/plugin-directory-fresh-task-smoke.json"
+        evidence = json.loads(path.read_text(encoding="utf-8"))
+        evidence["timing"]["task_turn_seconds"] = 767.617
+        evidence["timing"]["under_120_second_target"]["task_turn"] = True
+        path.write_text(json.dumps(evidence), encoding="utf-8")
+        self.assert_category(self.scan(), "fresh-task-evidence-invalid")
+
+    def test_fresh_task_evidence_requires_a_passing_plugin_invocation(self) -> None:
+        path = self.root / "release-evidence/plugin-directory-fresh-task-smoke.json"
+        evidence = json.loads(path.read_text(encoding="utf-8"))
+        evidence["fresh_task"]["passed"] = False
+        path.write_text(json.dumps(evidence), encoding="utf-8")
+        self.assert_category(self.scan(), "fresh-task-evidence-invalid")
+
+    def test_fresh_task_evidence_cannot_claim_rendered_pages_without_renderer(self) -> None:
+        path = self.root / "release-evidence/plugin-directory-fresh-task-smoke.json"
+        evidence = json.loads(path.read_text(encoding="utf-8"))
+        evidence["validation_surface"]["rendered_pages"] = 1
+        evidence["validation_surface"]["inspected_pages"] = 1
+        path.write_text(json.dumps(evidence), encoding="utf-8")
+        self.assert_category(self.scan(), "fresh-task-evidence-invalid")
+
+    def test_fresh_task_evidence_requires_an_honest_user_visible_claim(self) -> None:
+        path = self.root / "release-evidence/plugin-directory-fresh-task-smoke.json"
+        evidence = json.loads(path.read_text(encoding="utf-8"))
+        evidence["timing"]["under_120_second_target"]["user_visible_claim"] = "not-met"
+        path.write_text(json.dumps(evidence), encoding="utf-8")
+        self.assert_category(self.scan(), "fresh-task-evidence-invalid")
+
+    def test_fresh_task_evidence_rejects_candidate_file_mismatches(self) -> None:
+        path = self.root / "release-evidence/plugin-directory-fresh-task-smoke.json"
+        evidence = json.loads(path.read_text(encoding="utf-8"))
+        evidence["fresh_task"]["candidate_bundle_file_mismatches"] = 1
+        path.write_text(json.dumps(evidence), encoding="utf-8")
+        self.assert_category(self.scan(), "fresh-task-evidence-invalid")
+
+    def test_fresh_task_evidence_requires_reopen_and_integrity_proof(self) -> None:
+        path = self.root / "release-evidence/plugin-directory-fresh-task-smoke.json"
+        evidence = json.loads(path.read_text(encoding="utf-8"))
+        del evidence["verification"]["reopen_supplemental_checks_passed"]
+        evidence["artifact_integrity"]["generated_docx_sha256"] = "not-a-digest"
+        path.write_text(json.dumps(evidence), encoding="utf-8")
+        self.assert_category(self.scan(), "fresh-task-evidence-invalid")
+
+    def test_fresh_task_evidence_cannot_claim_portal_actions(self) -> None:
+        path = self.root / "release-evidence/plugin-directory-fresh-task-smoke.json"
+        evidence = json.loads(path.read_text(encoding="utf-8"))
+        evidence["openai_portal_state"]["submit_for_review_attempted"] = True
+        path.write_text(json.dumps(evidence), encoding="utf-8")
+        self.assert_category(self.scan(), "fresh-task-evidence-invalid")
 
     def test_english_private_visibility_scaffold_language_is_reported(self) -> None:
         stale_text = "Until the repository " + "is public, use the local folder."
