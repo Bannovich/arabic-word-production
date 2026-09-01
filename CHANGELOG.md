@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Replaced pre-publication installation wording after the repository became public.
 - Pinned text and binary Git attributes so clean checkouts produce reproducible submission bundles across operating systems.
+- Enforced square Plugin Directory branding assets and routed the published logo to the validated 512×512 icon.
 
 ## [0.1.0] - 2026-08-27
 

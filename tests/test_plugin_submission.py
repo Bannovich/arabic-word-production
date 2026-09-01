@@ -52,8 +52,9 @@ class PluginSubmissionCheckerTests(unittest.TestCase):
             },
         }
         self.write_json(".codex-plugin/plugin.json", manifest)
+        square_png = (REPOSITORY_ROOT / "assets" / "icon.png").read_bytes()
         for asset in ("assets/logo.png", "assets/icon.png"):
-            self.write_text(asset, "synthetic asset")
+            self.write_bytes(asset, square_png)
         self.write_text("submission/listing.en.md", "Arabic Word Production\n")
         self.write_text("submission/listing.ar.md", "Arabic Word Production\n")
         self.write_text("submission/availability.md", "Available wherever the plugin directory is available.\n")
@@ -73,6 +74,11 @@ class PluginSubmissionCheckerTests(unittest.TestCase):
         path = self.root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
+
+    def write_bytes(self, relative: str, content: bytes) -> None:
+        path = self.root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(content)
 
     def write_json(self, relative: str, content: object) -> None:
         self.write_text(relative, json.dumps(content, ensure_ascii=False, indent=2))
@@ -134,6 +140,11 @@ class PluginSubmissionCheckerTests(unittest.TestCase):
     def test_missing_referenced_asset_is_rejected(self) -> None:
         (self.root / "assets/logo.png").unlink()
         self.assert_category(self.scan(), "asset-missing")
+
+    def test_non_square_declared_logo_is_rejected(self) -> None:
+        rectangular_logo = (REPOSITORY_ROOT / "assets" / "logo.png").read_bytes()
+        self.write_bytes("assets/logo.png", rectangular_logo)
+        self.assert_category(self.scan(), "asset-not-square")
 
     def test_reviewer_case_counts_must_be_five_positive_and_three_negative(self) -> None:
         self.write_json("submission/reviewer-tests.json", {"positive": [], "negative": []})

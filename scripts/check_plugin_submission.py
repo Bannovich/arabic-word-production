@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import struct
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
@@ -32,6 +33,7 @@ COMMERCE_RE = re.compile(
     r"\b(?:buy|purchase|checkout|subscribe|subscription|paid plan|upgrade)\b",
     re.IGNORECASE,
 )
+PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 
 
 def finding(category: str, path: str, detail: str) -> dict[str, str]:
@@ -54,6 +56,16 @@ def safe_asset_path(root: Path, value: object) -> Path | None:
     except ValueError:
         return None
     return candidate
+
+
+def png_dimensions(path: Path) -> tuple[int, int] | None:
+    try:
+        header = path.read_bytes()[:24]
+    except OSError:
+        return None
+    if len(header) < 24 or not header.startswith(PNG_SIGNATURE) or header[12:16] != b"IHDR":
+        return None
+    return struct.unpack(">II", header[16:24])
 
 
 def scan_text_file(path: Path, root: Path) -> list[dict[str, str]]:
@@ -169,10 +181,17 @@ def scan_submission(root: Path | str) -> dict[str, object]:
     for field in ("websiteURL", "privacyPolicyURL", "termsOfServiceURL"):
         if not is_https_url(interface.get(field)):
             findings.append(finding("url-not-https", MANIFEST_PATH.as_posix(), f"{field} must be an HTTPS URL"))
-    for field in ("logo", "composerIcon"):
+    for field in ("logo", "composerIcon", "logoDark"):
+        if field == "logoDark" and field not in interface:
+            continue
         asset = safe_asset_path(root_path, interface.get(field))
         if asset is None or not asset.is_file():
             findings.append(finding("asset-missing", MANIFEST_PATH.as_posix(), f"{field} must reference an in-repository file"))
+            continue
+        if asset.suffix.casefold() == ".png":
+            dimensions = png_dimensions(asset)
+            if dimensions is not None and dimensions[0] != dimensions[1]:
+                findings.append(finding("asset-not-square", MANIFEST_PATH.as_posix(), f"{field} must reference a square image"))
 
     for relative in REQUIRED_SUBMISSION_FILES:
         path = root_path / relative
