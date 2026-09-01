@@ -1,7 +1,7 @@
 interface:
-  display_name: "Arabic Word Production"
+  display_name: "Arabic DOCX RTL"
   short_description: "Audited Arabic RTL and bilingual Word documents"
-  brand_color: "#1F4E78"
+  brand_color: "#4E249F"
   default_prompt: "Use $arabic-word-production to turn this Arabic or bilingual content into a polished, structurally audited Word document."
 policy:
   allow_implicit_invocation: true

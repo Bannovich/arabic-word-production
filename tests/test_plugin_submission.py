@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import struct
 import tempfile
 import unittest
 from pathlib import Path
@@ -142,7 +143,10 @@ class PluginSubmissionCheckerTests(unittest.TestCase):
         self.assert_category(self.scan(), "asset-missing")
 
     def test_non_square_declared_logo_is_rejected(self) -> None:
-        rectangular_logo = (REPOSITORY_ROOT / "assets" / "logo.png").read_bytes()
+        rectangular_logo = bytearray(
+            (REPOSITORY_ROOT / "assets" / "logo.png").read_bytes()
+        )
+        rectangular_logo[16:24] = struct.pack(">II", 1024, 512)
         self.write_bytes("assets/logo.png", rectangular_logo)
         self.assert_category(self.scan(), "asset-not-square")
 

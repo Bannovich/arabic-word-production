@@ -44,7 +44,7 @@ $arabic-word-production Create an Arabic-first Word document, then audit its RTL
 
 ### تثبيت Local Plugin
 
-المشروع متغلف بالفعل كـPlugin من خلال `.codex-plugin/plugin.json`. للاختبار المحلي: نزّل المشروع، وبعدها اطلب من `$plugin-creator` إنه يربط مجلد الـPlugin الحالي بالـpersonal marketplace. أعد تشغيل تطبيق ChatGPT Desktop، وافتح Plugins Directory، واختر المصدر المحلي، وثبّت **Arabic Word Production**. الـlocal marketplaces مختلفة عن الـuniversal public Plugins Directory.
+المشروع متغلف بالفعل كـPlugin من خلال `.codex-plugin/plugin.json`. للاختبار المحلي: نزّل المشروع، وبعدها اطلب من `$plugin-creator` إنه يربط مجلد الـPlugin الحالي بالـpersonal marketplace. أعد تشغيل تطبيق ChatGPT Desktop، وافتح Plugins Directory، واختر المصدر المحلي، وثبّت **Arabic DOCX RTL**. اسم المشروع والـpackage identifier الثابتين يفضلوا **Arabic Word Production** و`arabic-word-production`؛ التغيير في الاسم الظاهر للمستخدم فقط. الـlocal marketplaces مختلفة عن الـuniversal public Plugins Directory.
 
 الإصدار الحالي يحتوي على الـSkill فقط، ولا يحتاج MCP server أو ربط حساب خارجي.
 

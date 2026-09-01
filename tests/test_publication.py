@@ -107,7 +107,7 @@ class PublicationCheckerTests(unittest.TestCase):
             json.dumps(
                 {
                     "name": "arabic-word-production",
-                    "version": "0.1.0",
+                    "version": "0.1.1",
                     "description": "Safe synthetic plugin",
                     "author": {
                         "name": "Bannovich",
@@ -205,6 +205,11 @@ class PublicationCheckerTests(unittest.TestCase):
         result = self.scan()
         self.assertTrue(result["ok"], result["findings"])
         self.assertEqual([], result["findings"])
+
+    def test_current_manifest_matches_release_metadata(self) -> None:
+        result = load_checker().scan_repository(REPOSITORY_ROOT)
+        categories = {item["category"] for item in result["findings"]}
+        self.assertNotIn("plugin-manifest-mismatch", categories, result["findings"])
 
     def test_missing_required_file_is_reported(self) -> None:
         (self.root / "NOTICE").unlink()

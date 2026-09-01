@@ -34,7 +34,7 @@ Typical personal locations are `%USERPROFILE%\.codex\skills\arabic-word-producti
 
 ### Local Plugin installation
 
-This repository is already packaged as a plugin through `.codex-plugin/plugin.json`. For local testing, download the repository and ask `$plugin-creator` to wire the existing plugin folder into your personal marketplace. Restart the ChatGPT desktop app, open the Plugins Directory, select the local source, and install **Arabic Word Production**. Local marketplaces and the public universal Plugins Directory are separate distribution surfaces.
+This repository is already packaged as a plugin through `.codex-plugin/plugin.json`. For local testing, download the repository and ask `$plugin-creator` to wire the existing plugin folder into your personal marketplace. Restart the ChatGPT desktop app, open the Plugins Directory, select the local source, and install **Arabic DOCX RTL**. The project and stable package identifier remain **Arabic Word Production** and `arabic-word-production`; only the user-facing plugin name is shorter. Local marketplaces and the public universal Plugins Directory are separate distribution surfaces.
 
 The plugin package contains only the Skill in this release; it does not require an MCP server or external account connection.
 
