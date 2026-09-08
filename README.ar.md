@@ -2,6 +2,8 @@
 
 # Arabic Word Production
 
+[دليل الاستكمال المحلي داخل Codex وآخر نقطة محفوظة](CONTINUATION.md)
+
 [English](README.md) · [المساهمة](CONTRIBUTING.md) · [الإبلاغ عن مشكلة](https://github.com/Bannovich/arabic-word-production/issues)
 
 `Arabic Word Production` مشروع مفتوح المصدر في صورة Agent Skill وPlugin لإنشاء ومراجعة ملفات Microsoft Word العربية أو ثنائية اللغة عربي–إنجليزي. الفكرة الأساسية إن محاذاة النص، واتجاه الـParagraph، واتجاه الـRun، وترتيب أعمدة الجداول، وأبعاد الصفحة خصائص منفصلة؛ مجرد `Right Alignment` لا يعني إن المستند بقى `RTL` حقيقي.
@@ -50,16 +52,16 @@ $arabic-word-production Create an Arabic-first Word document, then audit its RTL
 
 ## Plugin Directory
 
-المشروع بيجهّز Candidate من نوع **skills-only** للـpublic Plugin Directory، لكنه ليس معتمدًا أو ظاهرًا هناك حتى الآن. الـCandidate لا يحتوي على MCP server أو ربط حساب أو خدمة يديرها المشروع أو Telemetry أو Checkout أو Subscription.
+النسخة الأساسية **skills-only** رقم `v0.1.0` خلصت الـreview واتنشرت في الـpublic Plugin Directory. سورس `v0.1.1` بيجهّز الاسم الأقصر **Arabic DOCX RTL** والهوية البصرية الجديدة؛ التغييرات دي مش Live غير بعد ما الـmaintainer يكمّل update review وpublish عند الـhost. ولا النسخة المنشورة ولا التحديث الجديد يضيفوا MCP server أو ربط حساب أو خدمة يديرها المشروع أو Telemetry أو Checkout أو Subscription.
 
-راجع [Privacy Policy](https://bannovich.github.io/arabic-word-production/privacy-policy/) و[Terms of Service](https://bannovich.github.io/arabic-word-production/terms-of-service/) و[حدود التقديم](https://bannovich.github.io/arabic-word-production/plugin-directory-submission/) لمعرفة النطاق بدقة. قبل أن يصبح الـPlugin عامًا، يلزم أن ينفّذ الناشر بنفسه أي Identity Verification وPolicy Attestations وخطوة review/publish النهائية التي يطلبها الـhost.
+راجع [Privacy Policy](https://bannovich.github.io/arabic-word-production/privacy-policy/) و[Terms of Service](https://bannovich.github.io/arabic-word-production/terms-of-service/) و[حدود النشر والتحديث](https://bannovich.github.io/arabic-word-production/plugin-directory-submission/) لمعرفة النطاق بدقة. تجهيز السورس أو ZIP لا يغيّر النسخة الـLive؛ والناشر لازم ينفّذ بنفسه أي Review أو Attestations أو Publish actions يطلبها الـhost للإصدار الجديد.
 
 ## البرامج وطرق الاستخدام المدعومة
 
 | المكان | الاستخدام | حالة `v0.1.0` |
 | --- | --- | --- |
 | ChatGPT Desktop / Codex | تثبيت أو استدعاء Agent Skill | المسار الأساسي |
-| ChatGPT وCodex Plugin hosts | تحميل الـPlugin من local marketplace | متغلف والـmanifest اجتاز التحقق |
+| ChatGPT وCodex Plugin hosts | تثبيت الـPlugin العام أو تحميل Development package محلية | النسخة الأساسية skills-only منشورة؛ تحديث هوية `v0.1.1` Pending |
 | برامج متوافقة مع Agent Skills | قراءة `SKILL.md` والموارد المرفقة | تعليمات قابلة للنقل؛ سلوك البرنامج قد يختلف |
 | Python 3.10+ | تشغيل Builder وOOXML Auditor مباشرة | Command-line path مدعوم |
 | Microsoft Word Desktop | فتح ملفات DOCX الناتجة | برنامج الإخراج الأساسي؛ التحقق يُذكر لكل ملف أو إصدار |

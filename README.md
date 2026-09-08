@@ -1,5 +1,7 @@
 # Arabic Word Production
 
+[Resume development in Codex / local checkpoint](CONTINUATION.md)
+
 [العربية](README.ar.md) · [Contributing](CONTRIBUTING.md) · [Report a problem](https://github.com/Bannovich/arabic-word-production/issues)
 
 Arabic Word Production is an open-source Agent Skill and plugin package for creating and auditing Arabic-first and bilingual Arabic-English Microsoft Word documents. It treats paragraph direction, run direction, table order, alignment, and page geometry as separate properties instead of assuming that right alignment is the same as RTL.
@@ -40,16 +42,16 @@ The plugin package contains only the Skill in this release; it does not require 
 
 ## Plugin Directory
 
-The project is preparing a **skills-only** candidate for the public Plugin Directory. It is not listed or approved there yet. The intended listing has no MCP server, account connection, project-operated service, telemetry, checkout, or subscription.
+The **skills-only** `v0.1.0` baseline completed review and is published in the public Plugin Directory. The `v0.1.1` source prepares the shorter **Arabic DOCX RTL** display name and new branding assets; those identity changes are not live until the maintainer completes the host's update review and publish flow. Neither version adds an MCP server, account connection, project-operated service, telemetry, checkout, or subscription.
 
-The public [Privacy Policy](https://bannovich.github.io/arabic-word-production/privacy-policy/), [Terms of Service](https://bannovich.github.io/arabic-word-production/terms-of-service/), and [submission boundary](https://bannovich.github.io/arabic-word-production/plugin-directory-submission/) describe its scope. Before an actual public listing, the publisher must personally complete any identity verification, policy attestations, and final review/publish actions required by the host.
+The public [Privacy Policy](https://bannovich.github.io/arabic-word-production/privacy-policy/), [Terms of Service](https://bannovich.github.io/arabic-word-production/terms-of-service/), and [publication/update boundary](https://bannovich.github.io/arabic-word-production/plugin-directory-submission/) describe its scope. Preparing source or a ZIP does not update the live listing; the publisher must personally complete any review, attestation, and publish actions required for the new version.
 
 ## Supported ways to use it
 
 | Surface | Use | Status in `v0.1.0` |
 | --- | --- | --- |
 | ChatGPT desktop / Codex | Install or invoke the Agent Skill | Primary workflow |
-| ChatGPT and Codex plugin hosts | Load the packaged plugin from a local marketplace | Packaged and manifest-validated |
+| ChatGPT and Codex plugin hosts | Install the public plugin or load a local development package | Published skills-only baseline; `v0.1.1` identity update pending |
 | Compatible Agent Skills clients | Read `skills/arabic-word-production/SKILL.md` and bundled resources | Portable instructions; host behavior varies |
 | Python 3.10+ | Run the deterministic builder and OOXML auditor directly | Supported command-line path |
 | Microsoft Word Desktop | Open the generated DOCX output | Output target; verification must be reported per release or document |

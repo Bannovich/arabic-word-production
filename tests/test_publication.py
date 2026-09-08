@@ -35,6 +35,7 @@ REQUIRED_PATHS = (
     "ROADMAP.md",
     "SECURITY.md",
     "SUPPORT.md",
+    "assets/BRANDING.md",
     "docs/adding-a-guardrail.md",
     "docs/architecture-decisions.md",
     "docs/compatibility-matrix.md",
@@ -51,7 +52,6 @@ REQUIRED_PATHS = (
     "release-evidence/plugin-directory-publication.json",
     "scripts/check_publication.py",
     "scripts/check_plugin_submission.py",
-    "scripts/generate_plugin_assets.py",
     "scripts/build_local_marketplace.py",
     "scripts/build_submission_bundle.py",
     "submission/availability.md",
@@ -215,6 +215,14 @@ class PublicationCheckerTests(unittest.TestCase):
         (self.root / "NOTICE").unlink()
         self.assert_category(self.scan(), "required-path-missing")
 
+    def test_missing_branding_source_of_truth_is_reported(self) -> None:
+        (self.root / "assets/BRANDING.md").unlink()
+        result = self.scan()
+        self.assert_category(result, "required-path-missing")
+        self.assertIn(
+            "assets/BRANDING.md", {item["path"] for item in result["findings"]}
+        )
+
     def test_fresh_task_evidence_requires_full_turn_timing(self) -> None:
         path = self.root / "release-evidence/plugin-directory-fresh-task-smoke.json"
         evidence = json.loads(path.read_text(encoding="utf-8"))
@@ -279,8 +287,18 @@ class PublicationCheckerTests(unittest.TestCase):
         (self.root / "README.md").write_text(stale_text, encoding="utf-8")
         self.assert_category(self.scan(), "stale-publication-state")
 
+    def test_english_prepublication_plugin_wording_is_reported(self) -> None:
+        stale_text = "The plugin is not " + "listed or approved there yet."
+        (self.root / "README.md").write_text(stale_text, encoding="utf-8")
+        self.assert_category(self.scan(), "stale-publication-state")
+
     def test_arabic_private_visibility_scaffold_language_is_reported(self) -> None:
         stale_text = "قبل ما الـRepository يبقى " + "Public، استخدم المجلد المحلي."
+        (self.root / "README.ar.md").write_text(stale_text, encoding="utf-8")
+        self.assert_category(self.scan(), "stale-publication-state")
+
+    def test_arabic_prepublication_plugin_wording_is_reported(self) -> None:
+        stale_text = "الـPlugin ليس " + "معتمدًا أو ظاهرًا هناك حتى الآن."
         (self.root / "README.ar.md").write_text(stale_text, encoding="utf-8")
         self.assert_category(self.scan(), "stale-publication-state")
 

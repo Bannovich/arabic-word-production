@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 import importlib.util
+import io
 import json
 import struct
 import tempfile
 import unittest
+import zlib
 from pathlib import Path
+
+from PIL import Image
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
@@ -53,9 +57,8 @@ class PluginSubmissionCheckerTests(unittest.TestCase):
             },
         }
         self.write_json(".codex-plugin/plugin.json", manifest)
-        square_png = (REPOSITORY_ROOT / "assets" / "icon.png").read_bytes()
-        for asset in ("assets/logo.png", "assets/icon.png"):
-            self.write_bytes(asset, square_png)
+        self.write_bytes("assets/logo.png", (REPOSITORY_ROOT / "assets" / "logo.png").read_bytes())
+        self.write_bytes("assets/icon.png", (REPOSITORY_ROOT / "assets" / "icon.png").read_bytes())
         self.write_text("submission/listing.en.md", "Arabic Word Production\n")
         self.write_text("submission/listing.ar.md", "Arabic Word Production\n")
         self.write_text("submission/availability.md", "Available wherever the plugin directory is available.\n")
@@ -80,6 +83,12 @@ class PluginSubmissionCheckerTests(unittest.TestCase):
         path = self.root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(content)
+
+    @staticmethod
+    def png_bytes(width: int, height: int) -> bytes:
+        output = io.BytesIO()
+        Image.new("1", (width, height), 0).save(output, format="PNG")
+        return output.getvalue()
 
     def write_json(self, relative: str, content: object) -> None:
         self.write_text(relative, json.dumps(content, ensure_ascii=False, indent=2))
@@ -143,12 +152,65 @@ class PluginSubmissionCheckerTests(unittest.TestCase):
         self.assert_category(self.scan(), "asset-missing")
 
     def test_non_square_declared_logo_is_rejected(self) -> None:
-        rectangular_logo = bytearray(
-            (REPOSITORY_ROOT / "assets" / "logo.png").read_bytes()
-        )
-        rectangular_logo[16:24] = struct.pack(">II", 1024, 512)
-        self.write_bytes("assets/logo.png", rectangular_logo)
+        self.write_bytes("assets/logo.png", self.png_bytes(1024, 512))
         self.assert_category(self.scan(), "asset-not-square")
+
+    def test_corrupt_declared_logo_is_rejected(self) -> None:
+        self.write_bytes("assets/logo.png", b"\x89PNG\r\n\x1a\ntruncated")
+        self.assert_category(self.scan(), "asset-unreadable")
+
+    def test_png_with_valid_crc_but_invalid_pixel_stream_is_rejected(self) -> None:
+        valid_png = self.png_bytes(64, 64)
+        corrupted = bytearray(valid_png[:8])
+        offset = 8
+        while offset < len(valid_png):
+            length = struct.unpack(">I", valid_png[offset:offset + 4])[0]
+            kind = valid_png[offset + 4:offset + 8]
+            payload = valid_png[offset + 8:offset + 8 + length]
+            if kind == b"IDAT":
+                payload = b"invalid pixel stream"
+            corrupted.extend(struct.pack(">I", len(payload)) + kind + payload)
+            corrupted.extend(struct.pack(">I", zlib.crc32(kind + payload)))
+            offset += length + 12
+        self.write_bytes("assets/logo.png", bytes(corrupted))
+        self.assert_category(self.scan(), "asset-unreadable")
+
+    def test_declared_logo_below_minimum_dimensions_is_rejected(self) -> None:
+        self.write_bytes("assets/logo.png", self.png_bytes(32, 32))
+        self.assert_category(self.scan(), "asset-dimensions-out-of-range")
+
+    def test_png_bad_idat_crc_is_reported_without_crashing(self) -> None:
+        data = bytearray(self.png_bytes(64, 64))
+        offset = 8
+        while offset < len(data):
+            length = struct.unpack(">I", data[offset:offset + 4])[0]
+            if data[offset + 4:offset + 8] == b"IDAT":
+                data[offset + 8 + length] ^= 1
+                break
+            offset += length + 12
+        self.write_bytes("assets/logo.png", bytes(data))
+        self.assert_category(self.scan(), "asset-unreadable")
+
+    def test_png_decompression_bomb_is_reported_without_crashing(self) -> None:
+        data = bytearray(self.png_bytes(64, 64))
+        data[16:24] = struct.pack(">II", 20000, 20000)
+        data[29:33] = struct.pack(">I", zlib.crc32(data[12:29]))
+        self.write_bytes("assets/logo.png", bytes(data))
+        self.assert_category(self.scan(), "asset-unreadable")
+
+    def test_declared_logo_above_maximum_dimensions_is_rejected(self) -> None:
+        self.write_bytes("assets/logo.png", self.png_bytes(4097, 4097))
+        self.assert_category(self.scan(), "asset-dimensions-out-of-range")
+
+    def test_declared_logo_over_five_mib_is_rejected(self) -> None:
+        oversized_png = self.png_bytes(512, 512) + (b"\0" * (5 * 1024 * 1024))
+        self.write_bytes("assets/logo.png", oversized_png)
+        self.assert_category(self.scan(), "asset-too-large")
+
+    def test_identical_logo_and_composer_icon_are_rejected(self) -> None:
+        logo_bytes = (self.root / "assets/logo.png").read_bytes()
+        self.write_bytes("assets/icon.png", logo_bytes)
+        self.assert_category(self.scan(), "asset-duplicate")
 
     def test_reviewer_case_counts_must_be_five_positive_and_three_negative(self) -> None:
         self.write_json("submission/reviewer-tests.json", {"positive": [], "negative": []})

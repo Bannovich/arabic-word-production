@@ -9,12 +9,14 @@ public CI log.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
-import struct
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
+
+from PIL import Image, UnidentifiedImageError
 
 
 MANIFEST_PATH = Path(".codex-plugin/plugin.json")
@@ -33,7 +35,9 @@ COMMERCE_RE = re.compile(
     r"\b(?:buy|purchase|checkout|subscribe|subscription|paid plan|upgrade)\b",
     re.IGNORECASE,
 )
-PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
+MIN_IMAGE_EDGE = 48
+MAX_IMAGE_EDGE = 4096
+MAX_IMAGE_BYTES = 5 * 1024 * 1024
 
 
 def finding(category: str, path: str, detail: str) -> dict[str, str]:
@@ -60,12 +64,28 @@ def safe_asset_path(root: Path, value: object) -> Path | None:
 
 def png_dimensions(path: Path) -> tuple[int, int] | None:
     try:
-        header = path.read_bytes()[:24]
+        with Image.open(path) as image:
+            if image.format != "PNG":
+                return None
+            dimensions = image.size
+            image.verify()
+        if all(MIN_IMAGE_EDGE <= edge <= MAX_IMAGE_EDGE for edge in dimensions):
+            with Image.open(path) as image:
+                image.load()
+    except (OSError, UnidentifiedImageError, SyntaxError, Image.DecompressionBombError):
+        return None
+    return dimensions
+
+
+def file_sha256(path: Path) -> str | None:
+    digest = hashlib.sha256()
+    try:
+        with path.open("rb") as stream:
+            for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                digest.update(chunk)
     except OSError:
         return None
-    if len(header) < 24 or not header.startswith(PNG_SIGNATURE) or header[12:16] != b"IHDR":
-        return None
-    return struct.unpack(">II", header[16:24])
+    return digest.hexdigest()
 
 
 def scan_text_file(path: Path, root: Path) -> list[dict[str, str]]:
@@ -124,6 +144,7 @@ def scan_reviewer_tests(path: Path, root: Path) -> list[dict[str, str]]:
 def scan_submission(root: Path | str) -> dict[str, object]:
     root_path = Path(root).resolve()
     findings: list[dict[str, str]] = []
+    validated_assets: dict[str, Path] = {}
     manifest_file = root_path / MANIFEST_PATH
     manifest: object = None
     try:
@@ -188,10 +209,35 @@ def scan_submission(root: Path | str) -> dict[str, object]:
         if asset is None or not asset.is_file():
             findings.append(finding("asset-missing", MANIFEST_PATH.as_posix(), f"{field} must reference an in-repository file"))
             continue
+        try:
+            asset_size = asset.stat().st_size
+        except OSError:
+            findings.append(finding("asset-unreadable", MANIFEST_PATH.as_posix(), f"{field} could not be inspected"))
+            continue
+        if asset_size > MAX_IMAGE_BYTES:
+            findings.append(finding("asset-too-large", MANIFEST_PATH.as_posix(), f"{field} must not exceed 5 MiB"))
+            continue
         if asset.suffix.casefold() == ".png":
             dimensions = png_dimensions(asset)
-            if dimensions is not None and dimensions[0] != dimensions[1]:
-                findings.append(finding("asset-not-square", MANIFEST_PATH.as_posix(), f"{field} must reference a square image"))
+            if dimensions is None:
+                findings.append(finding("asset-unreadable", MANIFEST_PATH.as_posix(), f"{field} must reference a decodable PNG image"))
+            else:
+                width, height = dimensions
+                if width != height:
+                    findings.append(finding("asset-not-square", MANIFEST_PATH.as_posix(), f"{field} must reference a square image"))
+                if not all(MIN_IMAGE_EDGE <= edge <= MAX_IMAGE_EDGE for edge in dimensions):
+                    findings.append(finding("asset-dimensions-out-of-range", MANIFEST_PATH.as_posix(), f"{field} dimensions must be between 48 and 4096 pixels"))
+                validated_assets[field] = asset
+
+    logo_path = validated_assets.get("logo")
+    composer_icon_path = validated_assets.get("composerIcon")
+    if logo_path is not None and composer_icon_path is not None:
+        logo_hash = file_sha256(logo_path)
+        composer_icon_hash = file_sha256(composer_icon_path)
+        if logo_hash is None or composer_icon_hash is None:
+            findings.append(finding("asset-unreadable", MANIFEST_PATH.as_posix(), "declared assets could not be compared"))
+        elif logo_hash == composer_icon_hash:
+            findings.append(finding("asset-duplicate", MANIFEST_PATH.as_posix(), "logo and composerIcon must use distinct image content"))
 
     for relative in REQUIRED_SUBMISSION_FILES:
         path = root_path / relative

@@ -64,6 +64,10 @@ class PluginAssetTests(unittest.TestCase):
         self.assertNotEqual(
             manifest["interface"]["logo"], manifest["interface"]["composerIcon"]
         )
+        self.assertNotEqual(
+            (ASSET_DIRECTORY / "logo.png").read_bytes(),
+            (ASSET_DIRECTORY / "icon.png").read_bytes(),
+        )
 
     def test_release_version_matches_python_package_metadata(self) -> None:
         manifest = json.loads(

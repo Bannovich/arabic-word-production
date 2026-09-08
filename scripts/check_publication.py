@@ -42,6 +42,7 @@ REQUIRED_PATHS = (
     "ROADMAP.md",
     "SECURITY.md",
     "SUPPORT.md",
+    "assets/BRANDING.md",
     "docs/adding-a-guardrail.md",
     "docs/architecture-decisions.md",
     "docs/compatibility-matrix.md",
@@ -58,7 +59,6 @@ REQUIRED_PATHS = (
     "release-evidence/plugin-directory-publication.json",
     "scripts/check_publication.py",
     "scripts/check_plugin_submission.py",
-    "scripts/generate_plugin_assets.py",
     "scripts/build_local_marketplace.py",
     "scripts/build_submission_bundle.py",
     "submission/availability.md",
@@ -181,8 +181,16 @@ STALE_PUBLICATION_PATTERNS = (
         re.compile(r"\bUntil the repository " + r"is public\b", re.IGNORECASE),
     ),
     (
+        "README.md",
+        re.compile(r"\bnot listed or approved there yet\b", re.IGNORECASE),
+    ),
+    (
         "README.ar.md",
         re.compile(r"قبل ما الـRepository يبقى " + r"Public", re.IGNORECASE),
+    ),
+    (
+        "README.ar.md",
+        re.compile(r"ليس معتمدًا أو ظاهرًا هناك حتى الآن", re.IGNORECASE),
     ),
 )
 
