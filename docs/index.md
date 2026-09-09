@@ -17,7 +17,7 @@ It treats paragraph direction, run direction, table order, alignment, and page g
 - produces evidence-scoped validation results; and
 - turns safe, synthetic problem reports into reusable guardrails.
 
-The published `v0.1.0` Plugin Directory baseline is skills-only. The `v0.1.1` source prepares the shorter **Arabic DOCX RTL** identity, which remains an unpublished update until the maintainer completes the host review and publish flow. Neither version has a project-operated server, account connection, telemetry, checkout, subscription, or hosted data service.
+**Arabic DOCX RTL v0.1.1** is published in the [Plugin Directory](https://chatgpt.com/plugins/plugins_6a96b648b318819188b6a57a8a86ab64), verified September 9, 2026. This skills-only version has no project-operated server, account connection, telemetry, checkout, subscription, or hosted data service.
 
 ## Important boundaries
 

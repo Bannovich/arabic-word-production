@@ -23,7 +23,7 @@
 - Base: `fix/plugin-directory-square-logo` at `ffa0cbc2acc4035c13f705f52055ee0329959dc3`.
 - Latest implementation commit at checkpoint creation: `bb1fb12` (`feat: rebrand plugin as Arabic DOCX RTL`). Use `git log -5` to find subsequent checkpoint commits; this file cannot contain its own commit hash.
 - Stable package/Skill ID: `arabic-word-production`; display name: `Arabic DOCX RTL`; prepared version: `0.1.1`; license: Apache-2.0.
-- User reported v0.1.0 published. The identity update has not been submitted from this task. Do not infer current portal status from local files.
+- On September 9 the maintainer completed submission/publication. Live OpenAI portal inspection confirmed `Arabic DOCX RTL`, version `0.1.1`, `Published`, with a View in Directory link. The old v0.1.0 row shows Approved with an optional Publish action; do not republish that older version.
 - Selected design: concept 2, white document + left RTL arrow + blue check, purple background. Production files: `assets/logo.png` and `assets/icon.png`, each 1254×1254. Guidance and regeneration prompts: `assets/BRANDING.md`.
 - The five-hour monitor was cancelled. Do not recreate it.
 - Maintainer authorized remaining integration steps on September 8–9. PR #6 merged into main as `2a4d9798b212f97185ddf5dda0d060f92b97de74`, after all six GitHub checks passed. OpenAI v0.1.1 draft created and saved. Final OpenAI review/publish and policy attestations retain the explicit confirmation boundary at the moment of action.
@@ -42,12 +42,16 @@
 | Final repair review | Findings addressed, 2026-09-08 | Independent review identified pixel-stream decoding and uncaught PNG exceptions. Reopen/load within allowed dimensions and structured handling of bad CRC/decompression-bomb errors implemented. Three reproductions failed before fixes; final 57-test suite passes |
 | GitHub integration | Complete, 2026-09-09 | PR #6 merged into main, commit `2a4d979`; all six checks passed on synchronized head `7032a9a`; remote main fetched and verified locally |
 | OpenAI identity draft | Created and saved, 2026-09-09 | v0.1.1 uploaded to existing plugin; name and both icons verified in light/dark preview; support URL and description filled, developer display restored to existing published value; three prompts and Skill present. Automated Skill scan pending; policy boxes untouched |
+| OpenAI publication | Confirmed live, 2026-09-09 | Maintainer performed Submit/Publish; fresh portal inspection shows Arabic DOCX RTL 0.1.1 Published. No further submission action required |
+| Post-publication audit | Complete, 2026-09-09 | Main Quality and Pages workflows successful at `2a4d979`; repository Public and Apache-2.0; website/privacy/terms all HTTP 200. GitHub Releases still v0.1.0; public docs retain pending-update wording; latest continuation log remains on feature branch |
 
 ## Exact next checkpoint
 
 GitHub implementation integration is complete: https://github.com/Bannovich/arabic-word-production/pull/6. Do not recreate it or repeat branding work. This later continuation-log commit may be ahead of main on the retained feature branch; implementation is already merged.
 
-Next inspect the saved OpenAI draft at https://platform.openai.com/plugins/plugins_6a96b648b318819188b6a57a8a86ab64/submissions/appsub_6aa0d634a268819199210b7d3e9ece3f . The Submit section showed `Skills is incomplete — Wait for scanning to complete` and four unchecked policy attestations. Wait for the existing scan; do not upload a duplicate version. At submission time ask the maintainer to confirm acceptance of OpenAI Terms/App guidelines, compliance with them and applicable laws, and that the plugin is not designed/marketed to under-13s. Only then check and submit; verify the resulting status and update this log. Publication may require another review outcome and action-time confirmation. No recurring monitor is active.
+OpenAI publication is complete and verified. Do not repeat submission, upload another version, or click Publish on the old 0.1.0 row. Listing: https://chatgpt.com/plugins/plugins_6a96b648b318819188b6a57a8a86ab64 . No recurring monitor is active.
+
+GitHub housekeeping authorized by the maintainer: current README/listing/docs now state v0.1.1 published, changelog dated September 9, and this log is being integrated into main. Next merge the documentation PR after passing checks and publish GitHub Release v0.1.1. Attach the exact previously uploaded plugin ZIP and its matching Skill ZIP; identify their source commit a04c5e8 in release notes (later documentation-only commits differ). Record final release verification in a local .qa report to avoid changing an already tagged release tree. Main Quality evidence for implementation: https://github.com/Bannovich/arabic-word-production/actions/runs/34308430695 ; Pages: https://github.com/Bannovich/arabic-word-production/actions/runs/34308430094 .
 
 The uploaded ZIP was built from implementation commit `a04c5e8` and has SHA-256 `09e9e787afd0fa9ed601df6eff3eb8ef1b6ad32a79a550feaa88b5ea0a150c53`. Later commits update continuation text and merge history; production code/assets are unchanged. Keep the uploaded artifact and its report as evidence; if building another artifact, use a separate output directory.
 

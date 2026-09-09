@@ -52,7 +52,7 @@ $arabic-word-production Create an Arabic-first Word document, then audit its RTL
 
 ## Plugin Directory
 
-النسخة الأساسية **skills-only** رقم `v0.1.0` خلصت الـreview واتنشرت في الـpublic Plugin Directory. سورس `v0.1.1` بيجهّز الاسم الأقصر **Arabic DOCX RTL** والهوية البصرية الجديدة؛ التغييرات دي مش Live غير بعد ما الـmaintainer يكمّل update review وpublish عند الـhost. ولا النسخة المنشورة ولا التحديث الجديد يضيفوا MCP server أو ربط حساب أو خدمة يديرها المشروع أو Telemetry أو Checkout أو Subscription.
+الإصدار **Arabic DOCX RTL v0.1.1** منشور في [Plugin Directory العام](https://chatgpt.com/plugins/plugins_6a96b648b318819188b6a57a8a86ab64) بالاسم الأقصر والأيقونات الجديدة. تم التحقق من النشر يوم 9 سبتمبر 2026. الإصدار من نوع **skills-only** ولا يضيف MCP server أو ربط حساب أو خدمة يديرها المشروع أو Telemetry أو Checkout أو Subscription.
 
 راجع [Privacy Policy](https://bannovich.github.io/arabic-word-production/privacy-policy/) و[Terms of Service](https://bannovich.github.io/arabic-word-production/terms-of-service/) و[حدود النشر والتحديث](https://bannovich.github.io/arabic-word-production/plugin-directory-submission/) لمعرفة النطاق بدقة. تجهيز السورس أو ZIP لا يغيّر النسخة الـLive؛ والناشر لازم ينفّذ بنفسه أي Review أو Attestations أو Publish actions يطلبها الـhost للإصدار الجديد.
 
@@ -61,7 +61,7 @@ $arabic-word-production Create an Arabic-first Word document, then audit its RTL
 | المكان | الاستخدام | حالة `v0.1.0` |
 | --- | --- | --- |
 | ChatGPT Desktop / Codex | تثبيت أو استدعاء Agent Skill | المسار الأساسي |
-| ChatGPT وCodex Plugin hosts | تثبيت الـPlugin العام أو تحميل Development package محلية | النسخة الأساسية skills-only منشورة؛ تحديث هوية `v0.1.1` Pending |
+| ChatGPT وCodex Plugin hosts | تثبيت الـPlugin العام أو تحميل Development package محلية | `v0.1.1` منشورة باسم Arabic DOCX RTL |
 | برامج متوافقة مع Agent Skills | قراءة `SKILL.md` والموارد المرفقة | تعليمات قابلة للنقل؛ سلوك البرنامج قد يختلف |
 | Python 3.10+ | تشغيل Builder وOOXML Auditor مباشرة | Command-line path مدعوم |
 | Microsoft Word Desktop | فتح ملفات DOCX الناتجة | برنامج الإخراج الأساسي؛ التحقق يُذكر لكل ملف أو إصدار |
