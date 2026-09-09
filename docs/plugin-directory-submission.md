@@ -7,7 +7,7 @@ permalink: /plugin-directory-submission/
 
 The published directory package is a **skills-only** plugin. It packages the open-source `arabic-word-production` Skill and does not include MCP tools, authentication, commerce, advertisements, telemetry, or a project-operated data service.
 
-Its public source of truth is the [GitHub repository](https://github.com/Bannovich/arabic-word-production). Version `0.1.0` completed review and publication. The `0.1.1` source prepares the shorter user-facing name **Arabic DOCX RTL** and new square branding assets; that update must be treated as unpublished until a maintainer completes the host review and publish flow.
+Its public source of truth is the [GitHub repository](https://github.com/Bannovich/arabic-word-production). Version `0.1.1` completed review and publication as **Arabic DOCX RTL**, with new square branding assets. The OpenAI portal showed `0.1.1 Published` on September 9, 2026. Future updates still require their own host review and publication.
 
 Directory listing metadata, reviewer cases, and release material are versioned in the repository. Reviewers and users should rely on the validation surface stated for each output instead of assuming universal Word compatibility.
 

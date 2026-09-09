@@ -42,7 +42,7 @@ The plugin package contains only the Skill in this release; it does not require 
 
 ## Plugin Directory
 
-The **skills-only** `v0.1.0` baseline completed review and is published in the public Plugin Directory. The `v0.1.1` source prepares the shorter **Arabic DOCX RTL** display name and new branding assets; those identity changes are not live until the maintainer completes the host's update review and publish flow. Neither version adds an MCP server, account connection, project-operated service, telemetry, checkout, or subscription.
+**Arabic DOCX RTL v0.1.1** is published in the [public Plugin Directory](https://chatgpt.com/plugins/plugins_6a96b648b318819188b6a57a8a86ab64), with the shorter display name and new branding assets. Publication was verified on September 9, 2026. This skills-only version adds no MCP server, account connection, project-operated service, telemetry, checkout, or subscription.
 
 The public [Privacy Policy](https://bannovich.github.io/arabic-word-production/privacy-policy/), [Terms of Service](https://bannovich.github.io/arabic-word-production/terms-of-service/), and [publication/update boundary](https://bannovich.github.io/arabic-word-production/plugin-directory-submission/) describe its scope. Preparing source or a ZIP does not update the live listing; the publisher must personally complete any review, attestation, and publish actions required for the new version.
 
@@ -51,7 +51,7 @@ The public [Privacy Policy](https://bannovich.github.io/arabic-word-production/p
 | Surface | Use | Status in `v0.1.0` |
 | --- | --- | --- |
 | ChatGPT desktop / Codex | Install or invoke the Agent Skill | Primary workflow |
-| ChatGPT and Codex plugin hosts | Install the public plugin or load a local development package | Published skills-only baseline; `v0.1.1` identity update pending |
+| ChatGPT and Codex plugin hosts | Install the public plugin or load a local development package | `v0.1.1` published as Arabic DOCX RTL |
 | Compatible Agent Skills clients | Read `skills/arabic-word-production/SKILL.md` and bundled resources | Portable instructions; host behavior varies |
 | Python 3.10+ | Run the deterministic builder and OOXML auditor directly | Supported command-line path |
 | Microsoft Word Desktop | Open the generated DOCX output | Output target; verification must be reported per release or document |

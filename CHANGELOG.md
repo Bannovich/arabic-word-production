@@ -6,11 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-09-09
+
 ### Changed
 
 - Renamed the user-facing plugin to `Arabic DOCX RTL` while preserving the stable `arabic-word-production` package and Skill identifiers.
 - Replaced the directory branding with separate square logo and Composer assets using the approved document, left-pointing RTL arrow, and validation-check concept.
-- Updated the interface color to the Eshtery-inspired purple `#4E249F` and prepared package version `0.1.1`.
+- Updated the interface color to the Eshtery-inspired purple `#4E249F` and published package version `0.1.1`.
 
 ### Added
 
