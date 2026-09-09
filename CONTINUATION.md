@@ -26,7 +26,7 @@
 - User reported v0.1.0 published. The identity update has not been submitted from this task. Do not infer current portal status from local files.
 - Selected design: concept 2, white document + left RTL arrow + blue check, purple background. Production files: `assets/logo.png` and `assets/icon.png`, each 1254×1254. Guidance and regeneration prompts: `assets/BRANDING.md`.
 - The five-hour monitor was cancelled. Do not recreate it.
-- Maintainer authorized all remaining integration steps on September 8–9. Branch pushed; PR #6 opened. Final OpenAI review/publish and policy attestations retain the explicit confirmation boundary at the moment of action.
+- Maintainer authorized remaining integration steps on September 8–9. PR #6 merged into main as `2a4d9798b212f97185ddf5dda0d060f92b97de74`, after all six GitHub checks passed. OpenAI v0.1.1 draft created and saved. Final OpenAI review/publish and policy attestations retain the explicit confirmation boundary at the moment of action.
 
 ## Milestone ledger
 
@@ -40,12 +40,16 @@
 | Portable local handoff | Created, 2026-09-08 | This file, repository AGENTS.md and README links; record subsequent results below |
 | Aggregate verification and packaging | Verified, 2026-09-08 | 57 repository + 24 Skill tests pass; both checkers zero findings; external plugin/Skill validators pass; Python 3.10 syntax checked for 20 files; ZIP integrity, manifest, handoff files, distinct assets and obsolete-generator removal checked |
 | Final repair review | Findings addressed, 2026-09-08 | Independent review identified pixel-stream decoding and uncaught PNG exceptions. Reopen/load within allowed dimensions and structured handling of bad CRC/decompression-bomb errors implemented. Three reproductions failed before fixes; final 57-test suite passes |
+| GitHub integration | Complete, 2026-09-09 | PR #6 merged into main, commit `2a4d979`; all six checks passed on synchronized head `7032a9a`; remote main fetched and verified locally |
+| OpenAI identity draft | Created and saved, 2026-09-09 | v0.1.1 uploaded to existing plugin; name and both icons verified in light/dark preview; support URL and description filled, developer display restored to existing published value; three prompts and Skill present. Automated Skill scan pending; policy boxes untouched |
 
 ## Exact next checkpoint
 
-September 9 integration checkpoint: branch pushed through `a04c5e8`; https://github.com/Bannovich/arabic-word-production/pull/6 opened against `main`, which GitHub reports can merge automatically. Next verify PR checks and merge when passing. OpenAI confirmed existing v0.1.0 Published; uploading v0.1.1 draft is not yet confirmed. The in-app browser file chooser timed out and its tabs disappeared after interruption; use the existing signed-in Chrome OpenAI tab and inspect current state before retrying. Preserve the original published plugin; upload a new version, not a separate plugin.
+GitHub implementation integration is complete: https://github.com/Bannovich/arabic-word-production/pull/6. Do not recreate it or repeat branding work. This later continuation-log commit may be ahead of main on the retained feature branch; implementation is already merged.
 
-The local implementation and repair review are complete. Next: inspect `git status` and `git log -5` to confirm the local checkpoint commit titled `fix: harden branding safeguards and save continuation guide`, and rebuild the ZIP if source files differ from the saved archive. Then obtain the maintainer's choice for pushing this branch and opening a GitHub pull request; check the remote base branch before integration. No identity update was pushed or submitted from this task. After GitHub integration, prepare the existing OpenAI listing update with v0.1.1 and the approved images, and stop before review submission/publication for confirmation at that time.
+Next inspect the saved OpenAI draft at https://platform.openai.com/plugins/plugins_6a96b648b318819188b6a57a8a86ab64/submissions/appsub_6aa0d634a268819199210b7d3e9ece3f . The Submit section showed `Skills is incomplete — Wait for scanning to complete` and four unchecked policy attestations. Wait for the existing scan; do not upload a duplicate version. At submission time ask the maintainer to confirm acceptance of OpenAI Terms/App guidelines, compliance with them and applicable laws, and that the plugin is not designed/marketed to under-13s. Only then check and submit; verify the resulting status and update this log. Publication may require another review outcome and action-time confirmation. No recurring monitor is active.
+
+The uploaded ZIP was built from implementation commit `a04c5e8` and has SHA-256 `09e9e787afd0fa9ed601df6eff3eb8ef1b6ad32a79a550feaa88b5ea0a150c53`. Later commits update continuation text and merge history; production code/assets are unchanged. Keep the uploaded artifact and its report as evidence; if building another artifact, use a separate output directory.
 
 The final ZIP is at `.qa/branding-v0.1.1/arabic-word-production-plugin.zip`; the local build report at `.qa/branding-v0.1.1/build-report.json` records its SHA-256 and inventory. These generated files are ignored by Git; rebuilding restores them. Check actual presence and timestamp when resuming after an interrupted turn.
 
