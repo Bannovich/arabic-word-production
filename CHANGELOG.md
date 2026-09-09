@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- Renamed the user-facing plugin to `Arabic DOCX RTL` while preserving the stable `arabic-word-production` package and Skill identifiers.
+- Replaced the directory branding with separate square logo and Composer assets using the approved document, left-pointing RTL arrow, and validation-check concept.
+- Updated the interface color to the Eshtery-inspired purple `#4E249F` and prepared package version `0.1.1`.
+
 ### Added
 
 - A public contribution path for future sanitized RTL failures and reusable guardrails.
@@ -20,8 +26,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Distinguished the published plugin baseline from the pending identity update in current public documentation.
+- Removed the obsolete branding generator that could overwrite reviewed identity assets; retained regeneration guidance in `assets/BRANDING.md`.
+- Added PNG integrity, dimension, file-size and duplicate-content submission safeguards with regression tests.
+- Added a portable local continuation checkpoint and instructions to refresh it after each milestone.
+
 - Replaced pre-publication installation wording after the repository became public.
 - Pinned text and binary Git attributes so clean checkouts produce reproducible submission bundles across operating systems.
+- Enforced square Plugin Directory branding assets and separate logo/Composer paths.
 
 ## [0.1.0] - 2026-08-27
 

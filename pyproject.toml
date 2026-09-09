@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "arabic-word-production"
-version = "0.1.0"
+version = "0.1.1"
 description = "Deterministic tools and guardrails for Arabic-first and bilingual Microsoft Word documents."
 readme = "README.md"
 requires-python = ">=3.10"

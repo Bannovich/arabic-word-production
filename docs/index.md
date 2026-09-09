@@ -17,7 +17,7 @@ It treats paragraph direction, run direction, table order, alignment, and page g
 - produces evidence-scoped validation results; and
 - turns safe, synthetic problem reports into reusable guardrails.
 
-The project is a skills-only Plugin Directory candidate. It has no project-operated server, account connection, telemetry, checkout, subscription, or hosted data service.
+The published `v0.1.0` Plugin Directory baseline is skills-only. The `v0.1.1` source prepares the shorter **Arabic DOCX RTL** identity, which remains an unpublished update until the maintainer completes the host review and publish flow. Neither version has a project-operated server, account connection, telemetry, checkout, subscription, or hosted data service.
 
 ## Important boundaries
 
