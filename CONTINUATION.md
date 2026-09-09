@@ -1,6 +1,6 @@
 # استكمال Arabic DOCX RTL داخل Codex
 
-آخر تحديث: 2026-09-08. هذا الملف هو نقطة الاستكمال المحلية. راجع حالة الملفات الفعلية قبل الاعتماد عليه؛ قد يحدث انقطاع بين حفظ ملف وتحديث هذا السجل.
+آخر تحديث: 2026-09-09. هذا الملف هو نقطة الاستكمال المحلية. راجع حالة الملفات الفعلية قبل الاعتماد عليه؛ قد يحدث انقطاع بين حفظ ملف وتحديث هذا السجل.
 
 ## فتح المشروع من حساب آخر
 
@@ -26,7 +26,7 @@
 - User reported v0.1.0 published. The identity update has not been submitted from this task. Do not infer current portal status from local files.
 - Selected design: concept 2, white document + left RTL arrow + blue check, purple background. Production files: `assets/logo.png` and `assets/icon.png`, each 1254×1254. Guidance and regeneration prompts: `assets/BRANDING.md`.
 - The five-hour monitor was cancelled. Do not recreate it.
-- No new push, merge, or portal action has been performed during this checkpoint work. Final OpenAI review/publish and policy attestations require explicit confirmation at the moment of action.
+- Maintainer authorized all remaining integration steps on September 8–9. Branch pushed; PR #6 opened. Final OpenAI review/publish and policy attestations retain the explicit confirmation boundary at the moment of action.
 
 ## Milestone ledger
 
@@ -42,6 +42,8 @@
 | Final repair review | Findings addressed, 2026-09-08 | Independent review identified pixel-stream decoding and uncaught PNG exceptions. Reopen/load within allowed dimensions and structured handling of bad CRC/decompression-bomb errors implemented. Three reproductions failed before fixes; final 57-test suite passes |
 
 ## Exact next checkpoint
+
+September 9 integration checkpoint: branch pushed through `a04c5e8`; https://github.com/Bannovich/arabic-word-production/pull/6 opened against `main`, which GitHub reports can merge automatically. Next verify PR checks and merge when passing. OpenAI confirmed existing v0.1.0 Published; uploading v0.1.1 draft is not yet confirmed. The in-app browser file chooser timed out and its tabs disappeared after interruption; use the existing signed-in Chrome OpenAI tab and inspect current state before retrying. Preserve the original published plugin; upload a new version, not a separate plugin.
 
 The local implementation and repair review are complete. Next: inspect `git status` and `git log -5` to confirm the local checkpoint commit titled `fix: harden branding safeguards and save continuation guide`, and rebuild the ZIP if source files differ from the saved archive. Then obtain the maintainer's choice for pushing this branch and opening a GitHub pull request; check the remote base branch before integration. No identity update was pushed or submitted from this task. After GitHub integration, prepare the existing OpenAI listing update with v0.1.1 and the approved images, and stop before review submission/publication for confirmation at that time.
 
